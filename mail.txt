@@ -46,5 +46,4 @@ replies you will receive that reply as a personal email, and the reply
 will appear on the list in the new thread your message started.
 Posting a message sends email to subscribers immediately, but it can
 take a few hours for postings and replies to show up in the
-SourceForge archive. :l
-
+SourceForge archive. :l,ule
