@@ -57,7 +57,7 @@ Geometry :h4,link(geometry)
 
   "Cartesian, heirarchical grids"_doc/Section_intro.html#intro_3 with multiple levels of local refinement
   "create grid from input script"_doc/create_grid.html or "read from file"_doc/read_grid.html
-  embed :triangulated (3d) or line-segmented (2d) surfaces"_doc/Section_intro.html#intro_3 in grid, "read in from file"_doc/read_surf.html :ul
+  embed "triangulated (3d) or line-segmented (2d) surfaces"_doc/Section_intro.html#intro_3 in grid, "read in from file"_doc/read_surf.html :ul
 
 Gas-phase collisions and chemistry :h4,link(collisions)
 

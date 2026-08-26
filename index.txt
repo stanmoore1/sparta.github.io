@@ -128,7 +128,7 @@ to implicit surfaces, custom per-surf options to "fix
 emit/surf"_doc/fix_emit_surf.html, a variable special function which
 allows particle-style variables to access per-grid quantities, and
 adds momentum and energy contributions of "fix
-emit/surf"_doc/fix_emit_surf.html" in the results of "compute
+emit/surf"_doc/fix_emit_surf.html in the results of "compute
 surf"_doc/compute_surf.html. See more details "here"_bug.html.  :l
 
 <IMG SRC = "images/new.gif"> (3/24) Release of version 7 Mar 2024.  It
