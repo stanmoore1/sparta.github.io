@@ -56,13 +56,33 @@ DELTAS = {
 # showed, the exact words the new one shows, and why.  Anything else is a
 # regression.  Each entry is (old run, new run, delta key, reason).
 DECLARED = {
+    # One typo, two visible consequences.  features.txt:60 opened a link
+    # with ":triangulated" where it meant a quote, so txt2html could not
+    # pair the quotes: it ran the two links together into
+    #   <A HREF = "doc/read_grid.html<A HREF = "...#intro_3">>read from file</A>
+    # which leaks a ">" in front of "read from file" and leaves the ":"
+    # in front of "triangulated".  The source is fixed, so both are gone.
+    #
+    # Declared as the two single-word runs the diff actually produces.  As
+    # one four-word run it matched nothing and this page failed the check.
     'features.html': [
-        ('>read from file', 'read from file', 'markup_typos_fixed',
-         'features.txt:60 opened a link with ":triangulated" where it meant '
-         'a quote, so txt2html could not pair the closing quote and emitted '
-         'a broken <A HREF> that swallowed the previous link and leaked a '
-         '">" into the text.'),
+        ('>read', 'read', 'markup_typos_fixed',
+         'the ">" txt2html leaked out of the unterminated <A HREF>'),
+        (':triangulated', 'triangulated', 'markup_typos_fixed',
+         'the ":" that should have been the link\'s opening quote'),
     ],
+}
+
+# Link targets that move because a declared markup fix moved them, as
+# exact (lost, added) sets: any other link changing on the same page is
+# still a failure, and a page not named here has no allowance at all.
+DECLARED_LINKS = {
+    'features.html': (
+        ['doc/read_grid.html<A HREF ='],
+        ['doc/Section_intro.html#intro_3', 'doc/read_grid.html'],
+        'the unterminated <A HREF> was one unusable target where the '
+        'source meant two real ones; fixing the typo restores both',
+    ),
 }
 
 # What MathJax leaves in the static HTML: the LaTeX between \\[..\\] for a
@@ -414,12 +434,20 @@ def main():
         # were themselves agreed for one of those two reasons, and never
         # where a link was also lost.
         recoverable = agreed['unescaped_lt'] or agreed['rst_markup_in_source']
+        declared = DECLARED_LINKS.get(name)
         if added and not lost and recoverable:
             agreed_total['links_recovered'] += len(list(added.elements()))
             agreed_pages['links_recovered'] += 1
             if args.verbose:
                 print(f'  ~ {name}: {len(list(added.elements()))} link(s) the '
                       f'old page hid, now visible (agreed)')
+        elif (declared and sorted(lost.elements()) == sorted(declared[0])
+                and sorted(added.elements()) == sorted(declared[1])):
+            # Exact sets, so any other link moving on this page still fails.
+            agreed_total['links_from_markup_fix'] += len(list(added.elements()))
+            agreed_pages['links_from_markup_fix'] += 1
+            if args.verbose:
+                print(f'  ~ {name}: {declared[2]}')
         elif lost or added:
             link_bad.append((name, sorted(lost.elements()), sorted(added.elements())))
             page_ok = False

@@ -11,17 +11,25 @@
    :author: Steve Plimpton
 
 
+.. rst-class:: center
+
 SPARTA Direct Simulation Monte Carlo (DSMC) Simulator
 =====================================================
 
+.. rst-class:: center
+
 *The generation of random numbers is too important to be left to
 chance.* -- Robert Coveyou 
+
+.. rst-class:: center
 
 *God does not play dice.* -- Albert Einstein 
 
 
 ----------
 
+
+.. rst-class:: center-cells
 
 +-----------------------------------------------+---------------------------------------------------------+--------------------------------------+-------------------------------------+
 | **Documentation**\                            | **Code**\                                               | **Results**\                         | **Other**\                          |
@@ -94,6 +102,8 @@ funding are listed on `this page <authors.html>`_.
 
 ----------
 
+
+.. rst-class:: center
 
 Recent SPARTA News
 ------------------
@@ -235,8 +245,12 @@ Recent SPARTA News
 ----------
 
 
+.. rst-class:: center
+
 SPARTA Highlight
 ----------------
+
+.. rst-class:: center
 
 (see the `Pictures & Movies <pictures.html>`_ page for more examples of
 SPARTA calculations) 
@@ -280,6 +294,8 @@ China, July 2014.  (to be published by AIP)
    <!-- Past SPARTA highlights:
    -->
 
+
+
 .. toctree::
    :hidden:
    :glob:
@@ -297,4 +313,3 @@ China, July 2014.  (to be published by AIP)
    unbug
    abstracts/*
    bench/*
-

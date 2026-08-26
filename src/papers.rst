@@ -1,3 +1,5 @@
+.. rst-class:: center
+
 `SPARTA WWW Site <index.html>`_ 
 
 .. _sws: index.html

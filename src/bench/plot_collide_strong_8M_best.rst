@@ -1,5 +1,6 @@
-Strong scaling performance, Collide benchmark, 8M particles
-Performance in millions of particle-timesteps / second / node
+| Strong scaling performance, Collide benchmark, 8M particles
+| Performance in millions of particle-timesteps / second / node
+|
 
 +-------+------------------------------+--------------------------------------+--------------------------------------+---------------------------------------------+---------------------------+---------------------------+--+
 | Nodes | SandyBridge                  | Haswell                              | Broadwell                            | KNL                                         | K80-1                     | P100-1                    |  |
@@ -19,8 +20,9 @@ Performance in millions of particle-timesteps / second / node
 | 64    | 191.5 (CPU,mpi=16)           | 313.3 (CPU,mpi=32,hyper=1)           | 353.7 (CPU,mpi=36,hyper=1)           | 125.9 (CPU/KNL,mpi=64,hyper=1)              | None                      | None                      |  |
 +-------+------------------------------+--------------------------------------+--------------------------------------+---------------------------------------------+---------------------------+---------------------------+--+
 
-
-Run commands and logfile links for column SandyBridge
+|
+| Run commands and logfile links for column SandyBridge
+|
 
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -n 16 -N 16 --bind-to core spa\_chama\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=chama.pkg=kokkos\_serial.kind=strong.size=8M.node=1.mpi=16 <log.sparta.date=23Dec17.model=collide.machine=chama.pkg=kokkos_serial.kind=strong.size=8M.node=1.mpi=16>`_    |
@@ -38,8 +40,9 @@ Run commands and logfile links for column SandyBridge
 | 64 | mpirun -n 1024 -N 16 --bind-to core spa\_chama\_cpu -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=chama.pkg=cpu.kind=strong.size=8M.node=64.mpi=16 <log.sparta.date=23Dec17.model=collide.machine=chama.pkg=cpu.kind=strong.size=8M.node=64.mpi=16>`_                                                                                               |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Haswell
+|
+| Run commands and logfile links for column Haswell
+|
 
 +----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | srun -n 64 -C haswell --ntasks-per-node 64 --cpu\_bind=rank -c 1 ./spa\_mutrino\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos\_serial.kind=strong.size=8M.node=1.mpi=64.hyper=2 <log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos_serial.kind=strong.size=8M.node=1.mpi=64.hyper=2>`_  |
@@ -57,8 +60,9 @@ Run commands and logfile links for column Haswell
 | 64 | srun -n 2048 -C haswell --ntasks-per-node 32 --cpu\_bind=rank -c 2 ./spa\_mutrino\_cpu -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=cpu.kind=strong.size=8M.node=64.mpi=32.hyper=1 <log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=cpu.kind=strong.size=8M.node=64.mpi=32.hyper=1>`_                                                                                             |
 +----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Broadwell
+|
+| Run commands and logfile links for column Broadwell
+|
 
 +----+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpiexec -np 72 -npernode 72 --oversubscribe --bind-to core ./spa\_serrano\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=kokkos\_serial.kind=strong.size=8M.node=1.mpi=72.hyper=2 <log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=kokkos_serial.kind=strong.size=8M.node=1.mpi=72.hyper=2>`_ |
@@ -76,8 +80,9 @@ Run commands and logfile links for column Broadwell
 | 64 | mpiexec -np 2304 -npernode 36 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=cpu.kind=strong.size=8M.node=64.mpi=36.hyper=1 <log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=cpu.kind=strong.size=8M.node=64.mpi=36.hyper=1>`_                                                                                            |
 +----+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column KNL
+|
+| Run commands and logfile links for column KNL
+|
 
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | setenv OMP\_NUM\_THREADS 2; srun -n 128 -C knl --ntasks-per-node 128 --cpu\_bind=threads -c 2 ./spa\_mutrino\_kokkos\_knl -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos\_knl.kind=strong.size=8M.node=1.mpi=128.thread=2.hyper=4 <log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos_knl.kind=strong.size=8M.node=1.mpi=128.thread=2.hyper=4>`_ |
@@ -95,8 +100,9 @@ Run commands and logfile links for column KNL
 | 64 | srun -n 4096 -C knl --ntasks-per-node 64 --cpu\_bind=rank -c 4 ./spa\_mutrino\_knl -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=cpu\_knl.kind=strong.size=8M.node=64.mpi=64.hyper=1 <log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=cpu_knl.kind=strong.size=8M.node=64.mpi=64.hyper=1>`_                                                                                                                                   |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column K80-1
+|
+| Run commands and logfile links for column K80-1
+|
 
 +----+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -np 2 --npersocket 1 --bind-to core spa\_ride80\_kokkos\_cuda -sf kk -k on g 2 -pk kokkos reduction atomic comm threaded -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.gpu.steps -log `log.sparta.date=23Dec17.model=collide.machine=ride80.pkg=kokkos\_cuda.kind=strong.size=8M.node=1.mpi=2.gpu=2 <log.sparta.date=23Dec17.model=collide.machine=ride80.pkg=kokkos_cuda.kind=strong.size=8M.node=1.mpi=2.gpu=2>`_  |
@@ -114,8 +120,9 @@ Run commands and logfile links for column K80-1
 | 64 | None                                                                                                                                                                                                                                                                                                                                                                                                                           |
 +----+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column P100-1
+|
+| Run commands and logfile links for column P100-1
+|
 
 +----+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -np 1 --npernode 1 --bind-to core spa\_ride100\_kokkos\_cuda -sf kk -k on g 1 -pk kokkos reduction atomic comm threaded -v x 128 -v y 80 -v z 80 -v t 100 -in in.collide.gpu.steps -log `log.sparta.date=23Dec17.model=collide.machine=ride100.pkg=kokkos\_cuda.kind=strong.size=8M.node=1.mpi=1.gpu=1 <log.sparta.date=23Dec17.model=collide.machine=ride100.pkg=kokkos_cuda.kind=strong.size=8M.node=1.mpi=1.gpu=1>`_ |

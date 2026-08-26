@@ -1,5 +1,6 @@
-Single core performance, Sphere benchmark, SandyBridge
-Performance in millions of particle-timesteps / second
+| Single core performance, Sphere benchmark, SandyBridge
+| Performance in millions of particle-timesteps / second
+|
 
 +------------+-----------+------------------+---------------------+--+
 | Nparticles | CPU (mpi) | Kokkos/OMP (mpi) | Kokkos/serial (mpi) |  |
@@ -9,8 +10,9 @@ Performance in millions of particle-timesteps / second
 | 16000      | 25.87 (1) | 10.1 (1)         | 22 (1)              |  |
 +------------+-----------+------------------+---------------------+--+
 
-
-Run commands and logfile links for column CPU
+|
+| Run commands and logfile links for column CPU
+|
 
 +-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 8000  | mpirun -n 1 -N 1 --bind-to core spa\_chama\_cpu -v x 8 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=core.size=8K.node=1.mpi=1 <log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=core.size=8K.node=1.mpi=1>`_    |
@@ -18,8 +20,9 @@ Run commands and logfile links for column CPU
 | 16000 | mpirun -n 1 -N 1 --bind-to core spa\_chama\_cpu -v x 16 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=core.size=16K.node=1.mpi=1 <log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=core.size=16K.node=1.mpi=1>`_ |
 +-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/OMP
+|
+| Run commands and logfile links for column Kokkos/OMP
+|
 
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 8000  | mpirun -n 1 -N 1 --bind-to socket spa\_chama\_kokkos\_omp -sf kk -k on t 1 -pk kokkos reduction parallel/reduce comm classic -v x 8 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=kokkos\_omp.kind=core.size=8K.node=1.mpi=1.thread=1 <log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=kokkos_omp.kind=core.size=8K.node=1.mpi=1.thread=1>`_    |
@@ -27,8 +30,9 @@ Run commands and logfile links for column Kokkos/OMP
 | 16000 | mpirun -n 1 -N 1 --bind-to socket spa\_chama\_kokkos\_omp -sf kk -k on t 1 -pk kokkos reduction parallel/reduce comm classic -v x 16 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=kokkos\_omp.kind=core.size=16K.node=1.mpi=1.thread=1 <log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=kokkos_omp.kind=core.size=16K.node=1.mpi=1.thread=1>`_ |
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/serial
+|
+| Run commands and logfile links for column Kokkos/serial
+|
 
 +-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 8000  | mpirun -n 1 -N 1 --bind-to core spa\_chama\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 8 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=kokkos\_serial.kind=core.size=8K.node=1.mpi=1 <log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=kokkos_serial.kind=core.size=8K.node=1.mpi=1>`_    |

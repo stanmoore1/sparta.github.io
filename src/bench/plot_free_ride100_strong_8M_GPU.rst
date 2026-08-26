@@ -1,5 +1,6 @@
-Strong scaling performance, Free benchmark, P100, 8M particles
-Performance in millions of particle-timesteps / second / node
+| Strong scaling performance, Free benchmark, P100, 8M particles
+| Performance in millions of particle-timesteps / second / node
+|
 
 +-------+---------------------+---------------------+---------------------+--+
 | Nodes | Kokkos/Cuda-1 (mpi) | Kokkos/Cuda-2 (mpi) | Kokkos/Cuda-4 (mpi) |  |
@@ -13,8 +14,9 @@ Performance in millions of particle-timesteps / second / node
 | 8     | 200.3 (1)           | 306.5 (2)           | 361.6 (4)           |  |
 +-------+---------------------+---------------------+---------------------+--+
 
-
-Run commands and logfile links for column Kokkos/Cuda-1
+|
+| Run commands and logfile links for column Kokkos/Cuda-1
+|
 
 +---+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1 | mpirun -np 1 --npernode 1 --bind-to core spa\_ride100\_kokkos\_cuda -sf kk -k on g 1 -pk kokkos reduction atomic comm threaded -v x 128 -v y 80 -v z 80 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos\_cuda.kind=strong.size=8M.node=1.mpi=1.gpu=1 <log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos_cuda.kind=strong.size=8M.node=1.mpi=1.gpu=1>`_ |
@@ -26,8 +28,9 @@ Run commands and logfile links for column Kokkos/Cuda-1
 | 8 | mpirun -np 8 --npernode 1 --bind-to core spa\_ride100\_kokkos\_cuda -sf kk -k on g 1 -pk kokkos reduction atomic comm threaded -v x 128 -v y 80 -v z 80 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos\_cuda.kind=strong.size=8M.node=8.mpi=1.gpu=1 <log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos_cuda.kind=strong.size=8M.node=8.mpi=1.gpu=1>`_ |
 +---+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/Cuda-2
+|
+| Run commands and logfile links for column Kokkos/Cuda-2
+|
 
 +---+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1 | mpirun -np 2 --npersocket 1 --bind-to core spa\_ride100\_kokkos\_cuda -sf kk -k on g 2 -pk kokkos reduction atomic comm threaded -v x 128 -v y 80 -v z 80 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos\_cuda.kind=strong.size=8M.node=1.mpi=2.gpu=2 <log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos_cuda.kind=strong.size=8M.node=1.mpi=2.gpu=2>`_  |
@@ -39,8 +42,9 @@ Run commands and logfile links for column Kokkos/Cuda-2
 | 8 | mpirun -np 16 --npersocket 1 --bind-to core spa\_ride100\_kokkos\_cuda -sf kk -k on g 2 -pk kokkos reduction atomic comm threaded -v x 128 -v y 80 -v z 80 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos\_cuda.kind=strong.size=8M.node=8.mpi=2.gpu=2 <log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos_cuda.kind=strong.size=8M.node=8.mpi=2.gpu=2>`_ |
 +---+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/Cuda-4
+|
+| Run commands and logfile links for column Kokkos/Cuda-4
+|
 
 +---+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1 | mpirun -np 4 --npersocket 2 --bind-to core spa\_ride100\_kokkos\_cuda -sf kk -k on g 4 -pk kokkos reduction atomic comm threaded -v x 128 -v y 80 -v z 80 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos\_cuda.kind=strong.size=8M.node=1.mpi=4.gpu=4 <log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos_cuda.kind=strong.size=8M.node=1.mpi=4.gpu=4>`_  |

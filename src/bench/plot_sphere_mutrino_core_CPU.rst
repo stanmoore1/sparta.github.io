@@ -1,5 +1,6 @@
-Single core performance, Sphere benchmark, Haswell
-Performance in millions of particle-timesteps / second
+| Single core performance, Sphere benchmark, Haswell
+| Performance in millions of particle-timesteps / second
+|
 
 +------------+-----------+------------------+---------------------+--+
 | Nparticles | CPU (mpi) | Kokkos/OMP (mpi) | Kokkos/serial (mpi) |  |
@@ -9,8 +10,9 @@ Performance in millions of particle-timesteps / second
 | 16000      | 27.04 (1) | 23 (1)           | 23.29 (1)           |  |
 +------------+-----------+------------------+---------------------+--+
 
-
-Run commands and logfile links for column CPU
+|
+| Run commands and logfile links for column CPU
+|
 
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 8000  | srun -n 1 -C haswell --ntasks-per-node 1 --cpu\_bind=cores -c 2 ./spa\_mutrino\_cpu -v x 8 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=cpu.kind=core.size=8K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=cpu.kind=core.size=8K.node=1.mpi=1.hyper=1>`_    |
@@ -18,8 +20,9 @@ Run commands and logfile links for column CPU
 | 16000 | srun -n 1 -C haswell --ntasks-per-node 1 --cpu\_bind=cores -c 2 ./spa\_mutrino\_cpu -v x 16 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=cpu.kind=core.size=16K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=cpu.kind=core.size=16K.node=1.mpi=1.hyper=1>`_ |
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/OMP
+|
+| Run commands and logfile links for column Kokkos/OMP
+|
 
 +-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 8000  | setenv OMP\_NUM\_THREADS 1; srun -n 1 -C haswell --ntasks-per-node 1 --cpu\_bind=cores -c 2 ./spa\_mutrino\_kokkos\_omp -sf kk -k on t 1 -pk kokkos reduction parallel/reduce comm classic -v x 8 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos\_omp.kind=core.size=8K.node=1.mpi=1.thread=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos_omp.kind=core.size=8K.node=1.mpi=1.thread=1.hyper=1>`_    |
@@ -27,8 +30,9 @@ Run commands and logfile links for column Kokkos/OMP
 | 16000 | setenv OMP\_NUM\_THREADS 1; srun -n 1 -C haswell --ntasks-per-node 1 --cpu\_bind=cores -c 2 ./spa\_mutrino\_kokkos\_omp -sf kk -k on t 1 -pk kokkos reduction parallel/reduce comm classic -v x 16 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos\_omp.kind=core.size=16K.node=1.mpi=1.thread=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos_omp.kind=core.size=16K.node=1.mpi=1.thread=1.hyper=1>`_ |
 +-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/serial
+|
+| Run commands and logfile links for column Kokkos/serial
+|
 
 +-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 8000  | srun -n 1 -C haswell --ntasks-per-node 1 --cpu\_bind=cores -c 2 ./spa\_mutrino\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 8 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos\_serial.kind=core.size=8K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos_serial.kind=core.size=8K.node=1.mpi=1.hyper=1>`_    |

@@ -1,5 +1,6 @@
-Single node performance, Collide benchmark, Broadwell
-Performance in millions of particle-timesteps / second
+| Single node performance, Collide benchmark, Broadwell
+| Performance in millions of particle-timesteps / second
+|
 
 +------------+-----------------+-------------------------------+---------------------------+--+
 | Nparticles | CPU (mpi,hyper) | Kokkos/OMP (mpi,hyper,thread) | Kokkos/serial (mpi,hyper) |  |
@@ -31,8 +32,9 @@ Performance in millions of particle-timesteps / second
 | 131072000  | 129 (72,2)      | 125.3 (36,2,2)                | 132.3 (72,2)              |  |
 +------------+-----------------+-------------------------------+---------------------------+--+
 
-
-Run commands and logfile links for column CPU
+|
+| Run commands and logfile links for column CPU
+|
 
 +-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpiexec -np 36 -npernode 36 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 16 -v y 10 -v z 20 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=cpu.kind=node.size=32K.node=1.mpi=36.hyper=2 <log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=cpu.kind=node.size=32K.node=1.mpi=36.hyper=2>`_      |
@@ -62,8 +64,9 @@ Run commands and logfile links for column CPU
 | 131072000 | mpiexec -np 72 -npernode 72 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 256 -v y 160 -v z 320 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=cpu.kind=node.size=128M.node=1.mpi=72.hyper=2 <log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=cpu.kind=node.size=128M.node=1.mpi=72.hyper=2>`_ |
 +-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/OMP
+|
+| Run commands and logfile links for column Kokkos/OMP
+|
 
 +-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpiexec -np 32 -npernode 32 --oversubscribe --bind-to socket ./spa\_serrano\_kokkos\_omp -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 16 -v y 10 -v z 20 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=kokkos\_omp.kind=node.size=32K.node=1.mpi=32.thread=2.hyper=2 <log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=kokkos_omp.kind=node.size=32K.node=1.mpi=32.thread=2.hyper=2>`_      |
@@ -93,8 +96,9 @@ Run commands and logfile links for column Kokkos/OMP
 | 131072000 | mpiexec -np 36 -npernode 36 --oversubscribe --bind-to socket ./spa\_serrano\_kokkos\_omp -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 320 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=kokkos\_omp.kind=node.size=128M.node=1.mpi=36.thread=2.hyper=2 <log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=kokkos_omp.kind=node.size=128M.node=1.mpi=36.thread=2.hyper=2>`_ |
 +-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/serial
+|
+| Run commands and logfile links for column Kokkos/serial
+|
 
 +-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpiexec -np 36 -npernode 36 --oversubscribe --bind-to core ./spa\_serrano\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 16 -v y 10 -v z 20 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=kokkos\_serial.kind=node.size=32K.node=1.mpi=36.hyper=1 <log.sparta.date=23Dec17.model=collide.machine=serrano.pkg=kokkos_serial.kind=node.size=32K.node=1.mpi=36.hyper=1>`_      |

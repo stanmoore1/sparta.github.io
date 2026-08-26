@@ -1,3 +1,5 @@
+.. rst-class:: center
+
 `SPARTA WWW Site <index.html>`_ 
 
 .. _sws: index.html
@@ -90,6 +92,8 @@ Jumping from curve-to-curve as node count increases is a weak scaling
 test, since the problem size is increasing with node count.  Again a
 horizontal line would represent perfect weak scaling.
 
+.. rst-class:: center
+
 .. image:: ../images/bench_free_small.jpg
    :target: images/bench_free.jpg
    :align: center
@@ -131,6 +135,8 @@ particles) and as large as 1B grid cells (10B particles) were run.
 The discussion above regarding strong and weak scaling also applies to
 this plot.  For any curve, a horizontal line would represent perfect
 weak scaling.
+
+.. rst-class:: center
 
 .. image:: ../images/bench_collide_small.jpg
    :target: images/bench_collide.jpg
@@ -228,6 +234,8 @@ interpret these plots.
 * Modes: per-core, per-node, strong scaling, weak scaling
 * Hardware: CPU, KNL, GPU options
 * Within plot: accelerator packages, one or multiple GPUs/node
+
+.. rst-class:: center-cells
 
 +--------+----------------+-------------+---------+----------+------------------------------------------------------+--------------------------------------------------------+
 | Mode   | SPARTA Version | Hardware    | Machine | Size     | Plot                                                 | Table                                                  |
@@ -392,6 +400,8 @@ interpret these plots.
 * Hardware: CPU, KNL, GPU options
 * Within plot: accelerator packages, one or multiple GPUs/node
 
+.. rst-class:: center-cells
+
 +--------+----------------+-------------+---------+----------+---------------------------------------------------------+-----------------------------------------------------------+
 | Mode   | SPARTA Version | Hardware    | Machine | Size     | Plot                                                    | Table                                                     |
 +--------+----------------+-------------+---------+----------+---------------------------------------------------------+-----------------------------------------------------------+
@@ -548,6 +558,8 @@ interpret these plots.
 * Modes: per-core, per-node, strong scaling, weak scaling
 * Hardware: CPU, KNL, GPU options
 * Within plot: accelerator packages, one or multiple GPUs/node
+
+.. rst-class:: center-cells
 
 +--------+----------------+-------------+---------+----------+--------------------------------------------------------+----------------------------------------------------------+
 | Mode   | SPARTA Version | Hardware    | Machine | Size     | Plot                                                   | Table                                                    |
@@ -714,6 +726,8 @@ How to build SPARTA and run the benchmarks
 
 This table shows which accelerator packages were used on which
 machines:
+
+.. rst-class:: center-cells
 
 +---------+-------------+-----+------------+------------+-------------+
 | Machine | Hardware    | CPU | Kokkos/OMP | Kokkos/KNL | Kokkos/Cuda |

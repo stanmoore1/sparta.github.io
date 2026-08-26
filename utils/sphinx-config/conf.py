@@ -36,6 +36,12 @@ exclude_patterns = []
 # characters as written rather than curling them.
 smartquotes = False
 
+# One page carries a ":pre" block -- the four commands that build SPARTA
+# for a benchmark machine -- and it was published as a plain <PRE>.
+# Sphinx would run it through Pygments and colour it as Python, which is
+# both wrong and a change to the page.
+highlight_language = 'none'
+
 # -- HTML ------------------------------------------------------------------
 #
 # "basic" rather than a documentation theme.  These pages are a web site:
@@ -52,7 +58,17 @@ html_show_sourcelink = False
 html_copy_source = False
 html_use_index = False
 html_domain_indices = False
-html_static_path = []
+
+# site.css is what makes "basic" look like the published pages: full
+# width, <H3>/<H4> headings, bordered centred tables, and none of the
+# theme's own navigation.  See the comments in that file.
+html_static_path = [os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                 '_static')]
+html_css_files = ['site.css']
+
+# The published pages have no per-heading permalinks, so none are emitted
+# rather than emitted and hidden.
+html_permalinks = False
 
 # doc/ holds the manual, copied in from the SPARTA repository at release
 # time.  It is a finished Sphinx build, not source for this one.

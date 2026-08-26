@@ -1,5 +1,6 @@
-Strong scaling performance, Sphere benchmark, 64M particles
-Performance in millions of particle-timesteps / second / node
+| Strong scaling performance, Sphere benchmark, 64M particles
+| Performance in millions of particle-timesteps / second / node
+|
 
 +-------+----------------------------+--------------------------------------------+--------------------------------------+--------------------------------------------+---------------------------+-------------------------+--+
 | Nodes | SandyBridge                | Haswell                                    | Broadwell                            | KNL                                        | K80-1                     | P100-1                  |  |
@@ -19,8 +20,9 @@ Performance in millions of particle-timesteps / second / node
 | 64    | 98.39 (CPU,mpi=16)         | 199.7 (CPU,mpi=64,hyper=2)                 | 222.6 (CPU,mpi=72,hyper=2)           | 143.6 (Kokkos/KNL,mpi=64,thread=4,hyper=4) | None                      | None                    |  |
 +-------+----------------------------+--------------------------------------------+--------------------------------------+--------------------------------------------+---------------------------+-------------------------+--+
 
-
-Run commands and logfile links for column SandyBridge
+|
+| Run commands and logfile links for column SandyBridge
+|
 
 +----+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -n 16 -N 16 --bind-to core spa\_chama\_cpu -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=strong.size=64M.node=1.mpi=16 <log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=strong.size=64M.node=1.mpi=16>`_                                                                                                   |
@@ -38,8 +40,9 @@ Run commands and logfile links for column SandyBridge
 | 64 | mpirun -n 1024 -N 16 --bind-to core spa\_chama\_cpu -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=strong.size=64M.node=64.mpi=16 <log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=strong.size=64M.node=64.mpi=16>`_                                                                                               |
 +----+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Haswell
+|
+| Run commands and logfile links for column Haswell
+|
 
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | setenv OMP\_NUM\_THREADS 2; srun -n 32 -C haswell --ntasks-per-node 32 --cpu\_bind=cores -c 2 ./spa\_mutrino\_kokkos\_omp -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos\_omp.kind=strong.size=64M.node=1.mpi=32.thread=2.hyper=2 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos_omp.kind=strong.size=64M.node=1.mpi=32.thread=2.hyper=2>`_  |
@@ -57,8 +60,9 @@ Run commands and logfile links for column Haswell
 | 64 | srun -n 4096 -C haswell --ntasks-per-node 64 --cpu\_bind=rank -c 1 ./spa\_mutrino\_cpu -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=cpu.kind=strong.size=64M.node=64.mpi=64.hyper=2 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=cpu.kind=strong.size=64M.node=64.mpi=64.hyper=2>`_                                                                                                                                       |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Broadwell
+|
+| Run commands and logfile links for column Broadwell
+|
 
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpiexec -np 72 -npernode 72 --oversubscribe --bind-to core ./spa\_serrano\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos\_serial.kind=strong.size=64M.node=1.mpi=72.hyper=2 <log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos_serial.kind=strong.size=64M.node=1.mpi=72.hyper=2>`_  |
@@ -76,8 +80,9 @@ Run commands and logfile links for column Broadwell
 | 64 | mpiexec -np 4608 -npernode 72 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=cpu.kind=strong.size=64M.node=64.mpi=72.hyper=2 <log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=cpu.kind=strong.size=64M.node=64.mpi=72.hyper=2>`_                                                                                             |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column KNL
+|
+| Run commands and logfile links for column KNL
+|
 
 +----+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | srun -n 256 -C knl --ntasks-per-node 256 --cpu\_bind=threads -c 1 ./spa\_mutrino\_kokkos\_serial\_knl -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos\_serial\_knl.kind=strong.size=64M.node=1.mpi=256.hyper=4 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos_serial_knl.kind=strong.size=64M.node=1.mpi=256.hyper=4>`_                            |
@@ -95,8 +100,9 @@ Run commands and logfile links for column KNL
 | 64 | setenv OMP\_NUM\_THREADS 4; srun -n 4096 -C knl --ntasks-per-node 64 --cpu\_bind=cores -c 4 ./spa\_mutrino\_kokkos\_knl -sf kk -k on t 4 -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos\_knl.kind=strong.size=64M.node=64.mpi=64.thread=4.hyper=4 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos_knl.kind=strong.size=64M.node=64.mpi=64.thread=4.hyper=4>`_   |
 +----+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column K80-1
+|
+| Run commands and logfile links for column K80-1
+|
 
 +----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -np 4 --npersocket 1 --bind-to core spa\_ride80\_kokkos\_cuda -sf kk -k on g 2 -pk kokkos reduction atomic comm threaded -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.gpu.steps -log `log.sparta.date=23Dec17.model=sphere.machine=ride80.pkg=kokkos\_cuda.kind=strong.size=64M.node=2.mpi=2.gpu=2 <log.sparta.date=23Dec17.model=sphere.machine=ride80.pkg=kokkos_cuda.kind=strong.size=64M.node=2.mpi=2.gpu=2>`_  |
@@ -114,8 +120,9 @@ Run commands and logfile links for column K80-1
 | 64 | None                                                                                                                                                                                                                                                                                                                                                                                                                            |
 +----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column P100-1
+|
+| Run commands and logfile links for column P100-1
+|
 
 +----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -np 4 --npernode 1 --bind-to core spa\_ride100\_kokkos\_cuda -sf kk -k on g 1 -pk kokkos reduction atomic comm threaded -v x 256 -v y 160 -v z 160 -v t 100 -in in.sphere.gpu.steps -log `log.sparta.date=23Dec17.model=sphere.machine=ride100.pkg=kokkos\_cuda.kind=strong.size=64M.node=4.mpi=1.gpu=1 <log.sparta.date=23Dec17.model=sphere.machine=ride100.pkg=kokkos_cuda.kind=strong.size=64M.node=4.mpi=1.gpu=1>`_ |

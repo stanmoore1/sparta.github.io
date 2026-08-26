@@ -1,5 +1,6 @@
-Single core performance, Free benchmark
-Performance in millions of particle-timesteps / second
+| Single core performance, Free benchmark
+| Performance in millions of particle-timesteps / second
+|
 
 +------------+-----------------------------+-------------------+-------------------+-----------------------+--+
 | Nparticles | SandyBridge                 | Haswell           | Broadwell         | KNL                   |  |
@@ -15,8 +16,9 @@ Performance in millions of particle-timesteps / second
 | 16000      | 43.89 (CPU,mpi=1)           | 52.47 (CPU,mpi=1) | 49.77 (CPU,mpi=1) | 12.25 (CPU/KNL,mpi=1) |  |
 +------------+-----------------------------+-------------------+-------------------+-----------------------+--+
 
-
-Run commands and logfile links for column SandyBridge
+|
+| Run commands and logfile links for column SandyBridge
+|
 
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1000  | mpirun -n 1 -N 1 --bind-to core spa\_chama\_cpu -v x 4 -v y 5 -v z 5 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=core.size=1K.node=1.mpi=1 <log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=core.size=1K.node=1.mpi=1>`_                                                                                                  |
@@ -30,8 +32,9 @@ Run commands and logfile links for column SandyBridge
 | 16000 | mpirun -n 1 -N 1 --bind-to core spa\_chama\_cpu -v x 16 -v y 10 -v z 10 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=core.size=16K.node=1.mpi=1 <log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=core.size=16K.node=1.mpi=1>`_                                                                                             |
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Haswell
+|
+| Run commands and logfile links for column Haswell
+|
 
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1000  | srun -n 1 -C haswell --ntasks-per-node 1 --cpu\_bind=cores -c 2 ./spa\_mutrino\_cpu -v x 4 -v y 5 -v z 5 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu.kind=core.size=1K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu.kind=core.size=1K.node=1.mpi=1.hyper=1>`_      |
@@ -45,8 +48,9 @@ Run commands and logfile links for column Haswell
 | 16000 | srun -n 1 -C haswell --ntasks-per-node 1 --cpu\_bind=cores -c 2 ./spa\_mutrino\_cpu -v x 16 -v y 10 -v z 10 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu.kind=core.size=16K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu.kind=core.size=16K.node=1.mpi=1.hyper=1>`_ |
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Broadwell
+|
+| Run commands and logfile links for column Broadwell
+|
 
 +-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1000  | mpiexec -np 1 -npernode 1 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 4 -v y 5 -v z 5 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=core.size=1K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=core.size=1K.node=1.mpi=1.hyper=1>`_      |
@@ -60,8 +64,9 @@ Run commands and logfile links for column Broadwell
 | 16000 | mpiexec -np 1 -npernode 1 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 16 -v y 10 -v z 10 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=core.size=16K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=core.size=16K.node=1.mpi=1.hyper=1>`_ |
 +-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column KNL
+|
+| Run commands and logfile links for column KNL
+|
 
 +-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1000  | srun -n 1 -C knl --ntasks-per-node 1 --cpu\_bind=cores -c 4 ./spa\_mutrino\_knl -v x 4 -v y 5 -v z 5 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu\_knl.kind=core.size=1K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu_knl.kind=core.size=1K.node=1.mpi=1.hyper=1>`_      |

@@ -1,5 +1,6 @@
-Weak scaling performance, Collide benchmark, KNL, 16M particles/node
-Performance in millions of particle-timesteps / second / node
+| Weak scaling performance, Collide benchmark, KNL, 16M particles/node
+| Performance in millions of particle-timesteps / second / node
+|
 
 +-------+---------------------+-------------------------------+-------------------------------+--+
 | Nodes | CPU/KNL (mpi,hyper) | Kokkos/KNL (mpi,thread,hyper) | Kokkos/serial/KNL (mpi,hyper) |  |
@@ -19,8 +20,9 @@ Performance in millions of particle-timesteps / second / node
 | 64    | 230.3 (256,4)       | 246.8 (128,2,4)               | 260.8 (256,4)                 |  |
 +-------+---------------------+-------------------------------+-------------------------------+--+
 
-
-Run commands and logfile links for column CPU/KNL
+|
+| Run commands and logfile links for column CPU/KNL
+|
 
 +----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | srun -n 256 -C knl --ntasks-per-node 256 --cpu\_bind=threads -c 1 ./spa\_mutrino\_knl -v x 128 -v y 80 -v z 160 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=cpu\_knl.kind=weak.size=16M.node=1.mpi=256.hyper=4 <log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=cpu_knl.kind=weak.size=16M.node=1.mpi=256.hyper=4>`_      |
@@ -38,8 +40,9 @@ Run commands and logfile links for column CPU/KNL
 | 64 | srun -n 16384 -C knl --ntasks-per-node 256 --cpu\_bind=threads -c 1 ./spa\_mutrino\_knl -v x 512 -v y 320 -v z 640 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=cpu\_knl.kind=weak.size=16M.node=64.mpi=256.hyper=4 <log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=cpu_knl.kind=weak.size=16M.node=64.mpi=256.hyper=4>`_ |
 +----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/KNL
+|
+| Run commands and logfile links for column Kokkos/KNL
+|
 
 +----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | setenv OMP\_NUM\_THREADS 2; srun -n 128 -C knl --ntasks-per-node 128 --cpu\_bind=threads -c 2 ./spa\_mutrino\_kokkos\_knl -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 160 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos\_knl.kind=weak.size=16M.node=1.mpi=128.thread=2.hyper=4 <log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos_knl.kind=weak.size=16M.node=1.mpi=128.thread=2.hyper=4>`_     |
@@ -57,8 +60,9 @@ Run commands and logfile links for column Kokkos/KNL
 | 64 | setenv OMP\_NUM\_THREADS 2; srun -n 8192 -C knl --ntasks-per-node 128 --cpu\_bind=threads -c 2 ./spa\_mutrino\_kokkos\_knl -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 512 -v y 320 -v z 640 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos\_knl.kind=weak.size=16M.node=64.mpi=128.thread=2.hyper=4 <log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos_knl.kind=weak.size=16M.node=64.mpi=128.thread=2.hyper=4>`_ |
 +----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/serial/KNL
+|
+| Run commands and logfile links for column Kokkos/serial/KNL
+|
 
 +----+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | srun -n 256 -C knl --ntasks-per-node 256 --cpu\_bind=threads -c 1 ./spa\_mutrino\_kokkos\_serial\_knl -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 160 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos\_serial\_knl.kind=weak.size=16M.node=1.mpi=256.hyper=4 <log.sparta.date=23Dec17.model=collide.machine=mutrino.pkg=kokkos_serial_knl.kind=weak.size=16M.node=1.mpi=256.hyper=4>`_      |

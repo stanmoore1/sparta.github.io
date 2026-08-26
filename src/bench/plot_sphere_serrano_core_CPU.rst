@@ -1,5 +1,6 @@
-Single core performance, Sphere benchmark, Broadwell
-Performance in millions of particle-timesteps / second
+| Single core performance, Sphere benchmark, Broadwell
+| Performance in millions of particle-timesteps / second
+|
 
 +------------+-----------+------------------+---------------------+--+
 | Nparticles | CPU (mpi) | Kokkos/OMP (mpi) | Kokkos/serial (mpi) |  |
@@ -9,8 +10,9 @@ Performance in millions of particle-timesteps / second
 | 16000      | 25.33 (1) | 20.21 (1)        | 20.8 (1)            |  |
 +------------+-----------+------------------+---------------------+--+
 
-
-Run commands and logfile links for column CPU
+|
+| Run commands and logfile links for column CPU
+|
 
 +-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 8000  | mpiexec -np 1 -npernode 1 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 8 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=cpu.kind=core.size=8K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=cpu.kind=core.size=8K.node=1.mpi=1.hyper=1>`_    |
@@ -18,8 +20,9 @@ Run commands and logfile links for column CPU
 | 16000 | mpiexec -np 1 -npernode 1 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 16 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=cpu.kind=core.size=16K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=cpu.kind=core.size=16K.node=1.mpi=1.hyper=1>`_ |
 +-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/OMP
+|
+| Run commands and logfile links for column Kokkos/OMP
+|
 
 +-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 8000  | mpiexec -np 1 -npernode 1 --oversubscribe --bind-to socket ./spa\_serrano\_kokkos\_omp -sf kk -k on t 1 -pk kokkos reduction parallel/reduce comm classic -v x 8 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos\_omp.kind=core.size=8K.node=1.mpi=1.thread=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos_omp.kind=core.size=8K.node=1.mpi=1.thread=1.hyper=1>`_    |
@@ -27,8 +30,9 @@ Run commands and logfile links for column Kokkos/OMP
 | 16000 | mpiexec -np 1 -npernode 1 --oversubscribe --bind-to socket ./spa\_serrano\_kokkos\_omp -sf kk -k on t 1 -pk kokkos reduction parallel/reduce comm classic -v x 16 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos\_omp.kind=core.size=16K.node=1.mpi=1.thread=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos_omp.kind=core.size=16K.node=1.mpi=1.thread=1.hyper=1>`_ |
 +-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/serial
+|
+| Run commands and logfile links for column Kokkos/serial
+|
 
 +-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 8000  | mpiexec -np 1 -npernode 1 --oversubscribe --bind-to core ./spa\_serrano\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 8 -v y 10 -v z 10 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos\_serial.kind=core.size=8K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos_serial.kind=core.size=8K.node=1.mpi=1.hyper=1>`_    |

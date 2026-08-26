@@ -1,5 +1,6 @@
-Single node performance, Free benchmark, SandyBridge
-Performance in millions of particle-timesteps / second
+| Single node performance, Free benchmark, SandyBridge
+| Performance in millions of particle-timesteps / second
+|
 
 +------------+------------+-------------------------+---------------------+--+
 | Nparticles | CPU (mpi)  | Kokkos/OMP (mpi,thread) | Kokkos/serial (mpi) |  |
@@ -31,8 +32,9 @@ Performance in millions of particle-timesteps / second
 | 131072000  | 128.4 (16) | 99.94 (8,2)             | 120.9 (16)          |  |
 +------------+------------+-------------------------+---------------------+--+
 
-
-Run commands and logfile links for column CPU
+|
+| Run commands and logfile links for column CPU
+|
 
 +-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpirun -n 16 -N 16 --bind-to core spa\_chama\_cpu -v x 16 -v y 10 -v z 20 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=node.size=32K.node=1.mpi=16 <log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=node.size=32K.node=1.mpi=16>`_      |
@@ -62,8 +64,9 @@ Run commands and logfile links for column CPU
 | 131072000 | mpirun -n 16 -N 16 --bind-to core spa\_chama\_cpu -v x 256 -v y 160 -v z 320 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=node.size=128M.node=1.mpi=16 <log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=node.size=128M.node=1.mpi=16>`_ |
 +-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/OMP
+|
+| Run commands and logfile links for column Kokkos/OMP
+|
 
 +-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpirun -n 8 -N 8 --bind-to socket spa\_chama\_kokkos\_omp -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 16 -v y 10 -v z 20 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=chama.pkg=kokkos\_omp.kind=node.size=32K.node=1.mpi=8.thread=2 <log.sparta.date=23Dec17.model=free.machine=chama.pkg=kokkos_omp.kind=node.size=32K.node=1.mpi=8.thread=2>`_      |
@@ -93,8 +96,9 @@ Run commands and logfile links for column Kokkos/OMP
 | 131072000 | mpirun -n 8 -N 8 --bind-to socket spa\_chama\_kokkos\_omp -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 320 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=chama.pkg=kokkos\_omp.kind=node.size=128M.node=1.mpi=8.thread=2 <log.sparta.date=23Dec17.model=free.machine=chama.pkg=kokkos_omp.kind=node.size=128M.node=1.mpi=8.thread=2>`_ |
 +-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/serial
+|
+| Run commands and logfile links for column Kokkos/serial
+|
 
 +-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpirun -n 16 -N 16 --bind-to core spa\_chama\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 16 -v y 10 -v z 20 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=chama.pkg=kokkos\_serial.kind=node.size=32K.node=1.mpi=16 <log.sparta.date=23Dec17.model=free.machine=chama.pkg=kokkos_serial.kind=node.size=32K.node=1.mpi=16>`_      |

@@ -1,5 +1,6 @@
-Weak scaling performance, Free benchmark, Broadwell, 16M particles/node
-Performance in millions of particle-timesteps / second / node
+| Weak scaling performance, Free benchmark, Broadwell, 16M particles/node
+| Performance in millions of particle-timesteps / second / node
+|
 
 +-------+-----------------+-------------------------------+---------------------------+--+
 | Nodes | CPU (mpi,hyper) | Kokkos/OMP (mpi,hyper,thread) | Kokkos/serial (mpi,hyper) |  |
@@ -19,8 +20,9 @@ Performance in millions of particle-timesteps / second / node
 | 64    | 275.1 (72,2)    | 237.5 (36,2,2)                | 250.3 (72,2)              |  |
 +-------+-----------------+-------------------------------+---------------------------+--+
 
-
-Run commands and logfile links for column CPU
+|
+| Run commands and logfile links for column CPU
+|
 
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpiexec -np 72 -npernode 72 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 128 -v y 80 -v z 160 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=weak.size=16M.node=1.mpi=72.hyper=2 <log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=weak.size=16M.node=1.mpi=72.hyper=2>`_      |
@@ -38,8 +40,9 @@ Run commands and logfile links for column CPU
 | 64 | mpiexec -np 4608 -npernode 72 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 512 -v y 320 -v z 640 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=weak.size=16M.node=64.mpi=72.hyper=2 <log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=weak.size=16M.node=64.mpi=72.hyper=2>`_ |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/OMP
+|
+| Run commands and logfile links for column Kokkos/OMP
+|
 
 +----+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpiexec -np 36 -npernode 36 --oversubscribe --bind-to socket ./spa\_serrano\_kokkos\_omp -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 160 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=serrano.pkg=kokkos\_omp.kind=weak.size=16M.node=1.mpi=36.thread=2.hyper=2 <log.sparta.date=23Dec17.model=free.machine=serrano.pkg=kokkos_omp.kind=weak.size=16M.node=1.mpi=36.thread=2.hyper=2>`_      |
@@ -57,8 +60,9 @@ Run commands and logfile links for column Kokkos/OMP
 | 64 | mpiexec -np 2304 -npernode 36 --oversubscribe --bind-to socket ./spa\_serrano\_kokkos\_omp -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 512 -v y 320 -v z 640 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=serrano.pkg=kokkos\_omp.kind=weak.size=16M.node=64.mpi=36.thread=2.hyper=2 <log.sparta.date=23Dec17.model=free.machine=serrano.pkg=kokkos_omp.kind=weak.size=16M.node=64.mpi=36.thread=2.hyper=2>`_ |
 +----+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/serial
+|
+| Run commands and logfile links for column Kokkos/serial
+|
 
 +----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpiexec -np 72 -npernode 72 --oversubscribe --bind-to core ./spa\_serrano\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 160 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=serrano.pkg=kokkos\_serial.kind=weak.size=16M.node=1.mpi=72.hyper=2 <log.sparta.date=23Dec17.model=free.machine=serrano.pkg=kokkos_serial.kind=weak.size=16M.node=1.mpi=72.hyper=2>`_      |

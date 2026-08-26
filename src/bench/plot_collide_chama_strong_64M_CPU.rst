@@ -1,5 +1,6 @@
-Strong scaling performance, Collide benchmark, SandyBridge, 64M particles
-Performance in millions of particle-timesteps / second / node
+| Strong scaling performance, Collide benchmark, SandyBridge, 64M particles
+| Performance in millions of particle-timesteps / second / node
+|
 
 +-------+------------+-------------------------+---------------------+--+
 | Nodes | CPU (mpi)  | Kokkos/OMP (mpi,thread) | Kokkos/serial (mpi) |  |
@@ -19,8 +20,9 @@ Performance in millions of particle-timesteps / second / node
 | 64    | 103.9 (16) | 78.76 (8,2)             | 95.56 (16)          |  |
 +-------+------------+-------------------------+---------------------+--+
 
-
-Run commands and logfile links for column CPU
+|
+| Run commands and logfile links for column CPU
+|
 
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -n 16 -N 16 --bind-to core spa\_chama\_cpu -v x 256 -v y 160 -v z 160 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=chama.pkg=cpu.kind=strong.size=64M.node=1.mpi=16 <log.sparta.date=23Dec17.model=collide.machine=chama.pkg=cpu.kind=strong.size=64M.node=1.mpi=16>`_     |
@@ -38,8 +40,9 @@ Run commands and logfile links for column CPU
 | 64 | mpirun -n 1024 -N 16 --bind-to core spa\_chama\_cpu -v x 256 -v y 160 -v z 160 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=chama.pkg=cpu.kind=strong.size=64M.node=64.mpi=16 <log.sparta.date=23Dec17.model=collide.machine=chama.pkg=cpu.kind=strong.size=64M.node=64.mpi=16>`_ |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/OMP
+|
+| Run commands and logfile links for column Kokkos/OMP
+|
 
 +----+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -n 8 -N 8 --bind-to socket spa\_chama\_kokkos\_omp -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 160 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=chama.pkg=kokkos\_omp.kind=strong.size=64M.node=1.mpi=8.thread=2 <log.sparta.date=23Dec17.model=collide.machine=chama.pkg=kokkos_omp.kind=strong.size=64M.node=1.mpi=8.thread=2>`_     |
@@ -57,8 +60,9 @@ Run commands and logfile links for column Kokkos/OMP
 | 64 | mpirun -n 512 -N 8 --bind-to socket spa\_chama\_kokkos\_omp -sf kk -k on t 2 -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 160 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=chama.pkg=kokkos\_omp.kind=strong.size=64M.node=64.mpi=8.thread=2 <log.sparta.date=23Dec17.model=collide.machine=chama.pkg=kokkos_omp.kind=strong.size=64M.node=64.mpi=8.thread=2>`_ |
 +----+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/serial
+|
+| Run commands and logfile links for column Kokkos/serial
+|
 
 +----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -n 16 -N 16 --bind-to core spa\_chama\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 160 -v t 100 -in in.collide.steps -log `log.sparta.date=23Dec17.model=collide.machine=chama.pkg=kokkos\_serial.kind=strong.size=64M.node=1.mpi=16 <log.sparta.date=23Dec17.model=collide.machine=chama.pkg=kokkos_serial.kind=strong.size=64M.node=1.mpi=16>`_     |

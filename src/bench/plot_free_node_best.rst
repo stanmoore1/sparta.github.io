@@ -1,5 +1,6 @@
-Single node performance, Free benchmark
-Performance in millions of particle-timesteps / second
+| Single node performance, Free benchmark
+| Performance in millions of particle-timesteps / second
+|
 
 +------------+--------------------+--------------------------------------+----------------------------+--------------------------------------------+---------------------------+---------------------------+--+
 | Nparticles | SandyBridge        | Haswell                              | Broadwell                  | KNL                                        | K80-1                     | P100-1                    |  |
@@ -31,8 +32,9 @@ Performance in millions of particle-timesteps / second
 | 131072000  | 128.4 (CPU,mpi=16) | 232.2 (CPU,mpi=64,hyper=2)           | 246.7 (CPU,mpi=72,hyper=2) | 386.2 (Kokkos/KNL,mpi=64,thread=4,hyper=4) | None                      | None                      |  |
 +------------+--------------------+--------------------------------------+----------------------------+--------------------------------------------+---------------------------+---------------------------+--+
 
-
-Run commands and logfile links for column SandyBridge
+|
+| Run commands and logfile links for column SandyBridge
+|
 
 +-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpirun -n 16 -N 16 --bind-to core spa\_chama\_cpu -v x 16 -v y 10 -v z 20 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=node.size=32K.node=1.mpi=16 <log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=node.size=32K.node=1.mpi=16>`_      |
@@ -62,8 +64,9 @@ Run commands and logfile links for column SandyBridge
 | 131072000 | mpirun -n 16 -N 16 --bind-to core spa\_chama\_cpu -v x 256 -v y 160 -v z 320 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=node.size=128M.node=1.mpi=16 <log.sparta.date=23Dec17.model=free.machine=chama.pkg=cpu.kind=node.size=128M.node=1.mpi=16>`_ |
 +-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Haswell
+|
+| Run commands and logfile links for column Haswell
+|
 
 +-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | srun -n 32 -C haswell --ntasks-per-node 32 --cpu\_bind=rank -c 2 ./spa\_mutrino\_cpu -v x 16 -v y 10 -v z 20 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu.kind=node.size=32K.node=1.mpi=32.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu.kind=node.size=32K.node=1.mpi=32.hyper=1>`_                                                                                              |
@@ -93,8 +96,9 @@ Run commands and logfile links for column Haswell
 | 131072000 | srun -n 64 -C haswell --ntasks-per-node 64 --cpu\_bind=rank -c 1 ./spa\_mutrino\_cpu -v x 256 -v y 160 -v z 320 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu.kind=node.size=128M.node=1.mpi=64.hyper=2 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu.kind=node.size=128M.node=1.mpi=64.hyper=2>`_                                                                                         |
 +-----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Broadwell
+|
+| Run commands and logfile links for column Broadwell
+|
 
 +-----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpiexec -np 32 -npernode 32 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 16 -v y 10 -v z 20 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=node.size=32K.node=1.mpi=32.hyper=1 <log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=node.size=32K.node=1.mpi=32.hyper=1>`_      |
@@ -124,8 +128,9 @@ Run commands and logfile links for column Broadwell
 | 131072000 | mpiexec -np 72 -npernode 72 --oversubscribe --bind-to core ./spa\_serrano\_cpu -v x 256 -v y 160 -v z 320 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=node.size=128M.node=1.mpi=72.hyper=2 <log.sparta.date=23Dec17.model=free.machine=serrano.pkg=cpu.kind=node.size=128M.node=1.mpi=72.hyper=2>`_ |
 +-----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column KNL
+|
+| Run commands and logfile links for column KNL
+|
 
 +-----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | srun -n 64 -C knl --ntasks-per-node 64 --cpu\_bind=rank -c 4 ./spa\_mutrino\_knl -v x 16 -v y 10 -v z 20 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu\_knl.kind=node.size=32K.node=1.mpi=64.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu_knl.kind=node.size=32K.node=1.mpi=64.hyper=1>`_                                                                                                                                      |
@@ -155,8 +160,9 @@ Run commands and logfile links for column KNL
 | 131072000 | setenv OMP\_NUM\_THREADS 4; srun -n 64 -C knl --ntasks-per-node 64 --cpu\_bind=cores -c 4 ./spa\_mutrino\_kokkos\_knl -sf kk -k on t 4 -pk kokkos reduction parallel/reduce comm classic -v x 256 -v y 160 -v z 320 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=kokkos\_knl.kind=node.size=128M.node=1.mpi=64.thread=4.hyper=4 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=kokkos_knl.kind=node.size=128M.node=1.mpi=64.thread=4.hyper=4>`_ |
 +-----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column K80-1
+|
+| Run commands and logfile links for column K80-1
+|
 
 +-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpirun -np 2 --npersocket 1 --bind-to core spa\_ride80\_kokkos\_cuda -sf kk -k on g 2 -pk kokkos reduction atomic comm threaded -v x 16 -v y 10 -v z 20 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=ride80.pkg=kokkos\_cuda.kind=node.size=32K.node=1.mpi=2.gpu=2 <log.sparta.date=23Dec17.model=free.machine=ride80.pkg=kokkos_cuda.kind=node.size=32K.node=1.mpi=2.gpu=2>`_    |
@@ -186,8 +192,9 @@ Run commands and logfile links for column K80-1
 | 131072000 | None                                                                                                                                                                                                                                                                                                                                                                                                             |
 +-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column P100-1
+|
+| Run commands and logfile links for column P100-1
+|
 
 +-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 32000     | mpirun -np 1 --npernode 1 --bind-to core spa\_ride100\_kokkos\_cuda -sf kk -k on g 1 -pk kokkos reduction atomic comm threaded -v x 16 -v y 10 -v z 20 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos\_cuda.kind=node.size=32K.node=1.mpi=1.gpu=1 <log.sparta.date=23Dec17.model=free.machine=ride100.pkg=kokkos_cuda.kind=node.size=32K.node=1.mpi=1.gpu=1>`_    |

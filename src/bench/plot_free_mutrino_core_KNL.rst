@@ -1,5 +1,6 @@
-Single core performance, Free benchmark, KNL
-Performance in millions of particle-timesteps / second
+| Single core performance, Free benchmark, KNL
+| Performance in millions of particle-timesteps / second
+|
 
 +------------+---------------+------------------+-------------------------+--+
 | Nparticles | CPU/KNL (mpi) | Kokkos/KNL (mpi) | Kokkos/serial/KNL (mpi) |  |
@@ -15,8 +16,9 @@ Performance in millions of particle-timesteps / second
 | 16000      | 12.25 (1)     | 9.582 (1)        | 9.705 (1)               |  |
 +------------+---------------+------------------+-------------------------+--+
 
-
-Run commands and logfile links for column CPU/KNL
+|
+| Run commands and logfile links for column CPU/KNL
+|
 
 +-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1000  | srun -n 1 -C knl --ntasks-per-node 1 --cpu\_bind=cores -c 4 ./spa\_mutrino\_knl -v x 4 -v y 5 -v z 5 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu\_knl.kind=core.size=1K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu_knl.kind=core.size=1K.node=1.mpi=1.hyper=1>`_      |
@@ -30,8 +32,9 @@ Run commands and logfile links for column CPU/KNL
 | 16000 | srun -n 1 -C knl --ntasks-per-node 1 --cpu\_bind=cores -c 4 ./spa\_mutrino\_knl -v x 16 -v y 10 -v z 10 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu\_knl.kind=core.size=16K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=cpu_knl.kind=core.size=16K.node=1.mpi=1.hyper=1>`_ |
 +-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/KNL
+|
+| Run commands and logfile links for column Kokkos/KNL
+|
 
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1000  | setenv OMP\_NUM\_THREADS 1; srun -n 1 -C knl --ntasks-per-node 1 --cpu\_bind=cores -c 4 ./spa\_mutrino\_kokkos\_knl -sf kk -k on t 1 -pk kokkos reduction parallel/reduce comm classic -v x 4 -v y 5 -v z 5 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=kokkos\_knl.kind=core.size=1K.node=1.mpi=1.thread=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=kokkos_knl.kind=core.size=1K.node=1.mpi=1.thread=1.hyper=1>`_      |
@@ -45,8 +48,9 @@ Run commands and logfile links for column Kokkos/KNL
 | 16000 | setenv OMP\_NUM\_THREADS 1; srun -n 1 -C knl --ntasks-per-node 1 --cpu\_bind=cores -c 4 ./spa\_mutrino\_kokkos\_knl -sf kk -k on t 1 -pk kokkos reduction parallel/reduce comm classic -v x 16 -v y 10 -v z 10 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=kokkos\_knl.kind=core.size=16K.node=1.mpi=1.thread=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=kokkos_knl.kind=core.size=16K.node=1.mpi=1.thread=1.hyper=1>`_ |
 +-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Kokkos/serial/KNL
+|
+| Run commands and logfile links for column Kokkos/serial/KNL
+|
 
 +-------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1000  | srun -n 1 -C knl --ntasks-per-node 1 --cpu\_bind=cores -c 4 ./spa\_mutrino\_kokkos\_serial\_knl -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 4 -v y 5 -v z 5 -v t 100 -in in.free.steps -log `log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=kokkos\_serial\_knl.kind=core.size=1K.node=1.mpi=1.hyper=1 <log.sparta.date=23Dec17.model=free.machine=mutrino.pkg=kokkos_serial_knl.kind=core.size=1K.node=1.mpi=1.hyper=1>`_      |

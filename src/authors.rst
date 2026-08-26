@@ -1,3 +1,5 @@
+.. rst-class:: center
+
 `SPARTA WWW Site <index.html>`_ 
 
 .. _sws: index.html
@@ -46,6 +48,8 @@ open-source software.
 
 Contributors to features added to SPARTA
 ----------------------------------------
+
+.. rst-class:: col1-center
 
 +-------+---------------------------------------------------+---------------------------------------------+
 | Sep24 | create\_isurf                                     | Andrew Hong (Sandia)                        |

@@ -1,5 +1,6 @@
-Weak scaling performance, Sphere benchmark, 16M particles/node
-Performance in millions of particle-timesteps / second / node
+| Weak scaling performance, Sphere benchmark, 16M particles/node
+| Performance in millions of particle-timesteps / second / node
+|
 
 +-------+-----------------------------+--------------------------------------------+--------------------------------------+--------------------------------------------+---------------------------+---------------------------+--+
 | Nodes | SandyBridge                 | Haswell                                    | Broadwell                            | KNL                                        | K80-1                     | P100-1                    |  |
@@ -19,8 +20,9 @@ Performance in millions of particle-timesteps / second / node
 | 64    | 52.28 (CPU,mpi=16)          | None                                       | None                                 | None                                       | None                      | None                      |  |
 +-------+-----------------------------+--------------------------------------------+--------------------------------------+--------------------------------------------+---------------------------+---------------------------+--+
 
-
-Run commands and logfile links for column SandyBridge
+|
+| Run commands and logfile links for column SandyBridge
+|
 
 +----+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -n 16 -N 16 --bind-to core spa\_chama\_cpu -v x 128 -v y 80 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=weak.size=16M.node=1.mpi=16 <log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=weak.size=16M.node=1.mpi=16>`_                                                                                                  |
@@ -38,8 +40,9 @@ Run commands and logfile links for column SandyBridge
 | 64 | mpirun -n 1024 -N 16 --bind-to core spa\_chama\_cpu -v x 512 -v y 320 -v z 640 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=weak.size=16M.node=64.mpi=16 <log.sparta.date=23Dec17.model=sphere.machine=chama.pkg=cpu.kind=weak.size=16M.node=64.mpi=16>`_                                                                                             |
 +----+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Haswell
+|
+| Run commands and logfile links for column Haswell
+|
 
 +----+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | setenv OMP\_NUM\_THREADS 4; srun -n 16 -C haswell --ntasks-per-node 16 --cpu\_bind=cores -c 4 ./spa\_mutrino\_kokkos\_omp -sf kk -k on t 4 -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos\_omp.kind=weak.size=16M.node=1.mpi=16.thread=4.hyper=2 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos_omp.kind=weak.size=16M.node=1.mpi=16.thread=4.hyper=2>`_     |
@@ -57,8 +60,9 @@ Run commands and logfile links for column Haswell
 | 64 | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 +----+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column Broadwell
+|
+| Run commands and logfile links for column Broadwell
+|
 
 +----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpiexec -np 72 -npernode 72 --oversubscribe --bind-to core ./spa\_serrano\_kokkos\_serial -sf kk -k on -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos\_serial.kind=weak.size=16M.node=1.mpi=72.hyper=2 <log.sparta.date=23Dec17.model=sphere.machine=serrano.pkg=kokkos_serial.kind=weak.size=16M.node=1.mpi=72.hyper=2>`_      |
@@ -76,8 +80,9 @@ Run commands and logfile links for column Broadwell
 | 64 | None                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 +----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column KNL
+|
+| Run commands and logfile links for column KNL
+|
 
 +----+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | setenv OMP\_NUM\_THREADS 4; srun -n 64 -C knl --ntasks-per-node 64 --cpu\_bind=cores -c 4 ./spa\_mutrino\_kokkos\_knl -sf kk -k on t 4 -pk kokkos reduction parallel/reduce comm classic -v x 128 -v y 80 -v z 160 -v t 100 -in in.sphere.steps -log `log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos\_knl.kind=weak.size=16M.node=1.mpi=64.thread=4.hyper=4 <log.sparta.date=23Dec17.model=sphere.machine=mutrino.pkg=kokkos_knl.kind=weak.size=16M.node=1.mpi=64.thread=4.hyper=4>`_   |
@@ -95,8 +100,9 @@ Run commands and logfile links for column KNL
 | 64 | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 +----+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column K80-1
+|
+| Run commands and logfile links for column K80-1
+|
 
 +----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -np 2 --npersocket 1 --bind-to core spa\_ride80\_kokkos\_cuda -sf kk -k on g 2 -pk kokkos reduction atomic comm threaded -v x 128 -v y 80 -v z 160 -v t 100 -in in.sphere.gpu.steps -log `log.sparta.date=23Dec17.model=sphere.machine=ride80.pkg=kokkos\_cuda.kind=weak.size=16M.node=1.mpi=2.gpu=2 <log.sparta.date=23Dec17.model=sphere.machine=ride80.pkg=kokkos_cuda.kind=weak.size=16M.node=1.mpi=2.gpu=2>`_   |
@@ -114,8 +120,9 @@ Run commands and logfile links for column K80-1
 | 64 | None                                                                                                                                                                                                                                                                                                                                                                                                                        |
 +----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-
-Run commands and logfile links for column P100-1
+|
+| Run commands and logfile links for column P100-1
+|
 
 +----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 1  | mpirun -np 1 --npernode 1 --bind-to core spa\_ride100\_kokkos\_cuda -sf kk -k on g 1 -pk kokkos reduction atomic comm threaded -v x 128 -v y 80 -v z 160 -v t 100 -in in.sphere.gpu.steps -log `log.sparta.date=23Dec17.model=sphere.machine=ride100.pkg=kokkos\_cuda.kind=weak.size=16M.node=1.mpi=1.gpu=1 <log.sparta.date=23Dec17.model=sphere.machine=ride100.pkg=kokkos_cuda.kind=weak.size=16M.node=1.mpi=1.gpu=1>`_  |
