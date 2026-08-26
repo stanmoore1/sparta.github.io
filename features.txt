@@ -106,4 +106,4 @@ written in "Python"_python and is available for download from "the
 Pizza.py WWW site"_pizza. :l,ule
 
 :link(pizza,https://lammps.github.io/pizza)
-:link(python,http://www.python.org)
+:link(python,https://www.python.org)

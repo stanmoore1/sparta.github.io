@@ -1939,7 +1939,7 @@ the "Pictures & Movies page"_pictures.html#paraview of the web site.
 The surface data and STL files used for several of these space craft
 were added to the data directory of the distribution.
 
-:link(paraview,http://www.paraview.org)
+:link(paraview,https://www.paraview.org)
 
 This is the "list of changed files"_patches/files.13Mar15 from the 6
 Mar 2015 version.
@@ -2273,7 +2273,7 @@ patch.
 Tom Otahal (Sandia) has written "2 Python
 scripts"_doc/Section_tools.html#paraview which can convert SPARTA grid
 and surface data (input and output) to ParaView format.
-"ParaView"_http://www.paraview.org is a popular, powerful,
+"ParaView"_https://www.paraview.org is a popular, powerful,
 freely-available visualization package.  You must have ParaView
 installed to use the Python scripts.  See tools/paraview/README for
 more details.

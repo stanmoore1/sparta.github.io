@@ -152,13 +152,13 @@ Pre- and post-processing
 * Our group has also written and released a separate toolkit called
   `Pizza.py <https://lammps.github.io/pizza>`_ which provides tools for doing setup, analysis,
   plotting, and visualization for SPARTA simulations.  Pizza.py is
-  written in `Python <http://www.python.org>`_ and is available for download from `the Pizza.py WWW site <https://lammps.github.io/pizza>`_.
+  written in `Python <https://www.python.org>`_ and is available for download from `the Pizza.py WWW site <https://lammps.github.io/pizza>`_.
 
 .. _pizza: https://lammps.github.io/pizza
 
 
 
-.. _python: http://www.python.org
+.. _python: https://www.python.org
 
 
 

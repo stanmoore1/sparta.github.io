@@ -13,9 +13,9 @@
 SPARTA Authors and Thanks
 =========================
 
-The development of SPARTA has been funded by the `US Department of Energy <http://www.doe.gov>`_ (DOE).
+The development of SPARTA has been funded by the `US Department of Energy <https://www.energy.gov>`_ (DOE).
 
-.. _doe: http://www.doe.gov
+.. _doe: https://www.energy.gov
 
 
 

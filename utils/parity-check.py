@@ -148,6 +148,49 @@ RETARGETED = {
     },
 }
 
+# External URLs this branch deliberately retargeted, listed per page as
+# the URL the published page linked.  External links are compared on
+# losses only (see below), so naming the old URL is what clears it; any
+# other external link that stops being made still fails.
+#
+# Every replacement was fetched before being written, and only ones that
+# answered 200 were used.  The two that matter beyond tidiness:
+#
+#   gnu.org retired /copyleft/ and redirects it to gpl-3.0.html, so the
+#   site's "GPL" link was landing readers on version 3.  SPARTA's LICENSE
+#   is "GNU GENERAL PUBLIC LICENSE, Version 2, June 1991" -- as is
+#   LAMMPS's -- so it now points at gpl-2.0.html.
+#
+#   "this page"_../download.html climbed above the site root.  It was
+#   written when the site lived under sjplimp.github.io/sparta/, where it
+#   meant sjplimp.github.io/download.html -- which is still there, still
+#   lists Pizza.py and still serves tars/pizza.tar.gz.
+#
+# gnu.org is left on http: its https reset the connection from here, so
+# an https URL could not be verified and was not guessed at.
+EXTERNAL_RETARGETED = {
+    'authors.html': {'http://www.doe.gov'},
+    'bug.html': {'http://www.paraview.org'},
+    'features.html': {'http://www.python.org'},
+    'index.html': {'http://sourceforge.net/projects/sparta',
+                   'http://www.doe.gov',
+                   'http://www.gnu.org/copyleft/gpl.html',
+                   'http://www.gnu.org/licenses/lgpl-2.1.html',
+                   'http://www.paraview.org',
+                   'http://www.sandia.gov'},
+    'open_source.html': {'http://www.gnu.org/copyleft/gpl.html',
+                         'http://www.gnu.org/licenses/lgpl-2.1.html',
+                         'http://www.opensource.org'},
+    'other.html': {'http://en.wikipedia.org/wiki/Direct_simulation_Monte_Carlo',
+                   'http://mt.seas.upenn.edu/Archive/Graphics/A',
+                   'http://www.paraview.org',
+                   'http://www.python.org',
+                   'http://www.tecplot.com'},
+    'pictures.html': {'http://www.paraview.org',
+                      'http://www.tecplot.com'},
+}
+
+
 # Links the published page could not make at all, restored by a fix
 # declared above.  Exact, and only on pages that have a declaration.
 RESTORED = {
@@ -454,6 +497,22 @@ def main():
         external = lambda L: collections.Counter(
             x for x in L if x.startswith(('http', 'mailto', 'ftp')))
         e_lost = external(links(o)) - external(links(n))
+        n_ext = sum(e_lost.pop(url, 0)
+                    for url in EXTERNAL_RETARGETED.get(name, ()))
+        if n_ext:
+            agreed_total['external_retargeted'] += n_ext
+            agreed_pages['external_retargeted'] += 1
+        # Losses alone cannot police these.  A declared fix that gets
+        # reverted puts the old URL back, which loses nothing and so
+        # looks exactly like the published page.  So the new build is
+        # also required not to link the URL that was declared away.
+        e_new = external(links(n))
+        still = sorted(u for u in EXTERNAL_RETARGETED.get(name, ())
+                       if e_new[u])
+        if still:
+            link_bad.append((name + ' (external, declared fix reverted)',
+                             still, []))
+            page_ok = False
         if e_lost:
             link_bad.append((name + ' (external)', sorted(e_lost.elements()), []))
             page_ok = False

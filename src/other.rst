@@ -34,10 +34,10 @@ Other DSMC codes
 These are other general-purpose DSMC codes we are aware of, which may
 be well-suited to the problems you want to model.  Most of them are
 not available for direct download, but you can contact the authors for
-more information.  This `Wikipedia DSMC page <http://en.wikipedia.org/wiki/Direct_simulation_Monte_Carlo>`_ has some additional
+more information.  This `Wikipedia DSMC page <https://en.wikipedia.org/wiki/Direct_simulation_Monte_Carlo>`_ has some additional
 information on these codes and the groups who sponsor them.
 
-.. _wiki: http://en.wikipedia.org/wiki/Direct_simulation_Monte_Carlo
+.. _wiki: https://en.wikipedia.org/wiki/Direct_simulation_Monte_Carlo
 
 
 
@@ -68,9 +68,9 @@ into the grid, resulting in cut and split grid cells.
 These are high-quality visualization packages we have used for
 particle simulations and can recommend.
 
-* `TecPlot <http://www.tecplot.com>`_
+* `TecPlot <https://www.tecplot.com>`_
 * `VMD <http://www.ks.uiuc.edu/Research/vmd>`_
-* `AtomEye <http://mt.seas.upenn.edu/Archive/Graphics/A>`_
+* `AtomEye <http://li.mit.edu/Archive/Graphics/A/>`_
 
 TecPlot can work with grid and surface element data based on SPARTA
 output.  VMD and AtomEye are particle visualizers widely used for
@@ -80,14 +80,14 @@ the needed format.
 
 We are also currently working on enabling SPARTA output of particles,
 grid, and surface element data to be visualized by
-`ParaView <http://www.paraview.org>`_.
+`ParaView <https://www.paraview.org>`_.
 
 Our group has also written and released a toolkit called
 `Pizza.py <https://lammps.github.io/pizza>`_ which provides some tools for doing SPARTA pre- and
 post-processing, and which includes a simple OpenGL-based
 visualization tool called `gl <https://lammps.github.io/pizza/doc/gl.html>`_.
-Pizza.py is written in `Python <http://www.python.org>`_, and is
-available for download from `this page <https://lammps.github.io/pizza>`_.  It also
+Pizza.py is written in `Python <https://www.python.org>`_, and is
+available for download from `this page <https://sjplimp.github.io/download.html>`_.  It also
 includes tools that convert SPARTA particle dumps into input formats
 readable by VMD and AtomEye.
 

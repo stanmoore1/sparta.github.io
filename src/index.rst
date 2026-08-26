@@ -31,19 +31,19 @@ chance.* -- Robert Coveyou
 
 .. rst-class:: center-cells
 
-+-----------------------------------------------+---------------------------------------------------------+--------------------------------------+-------------------------------------+
-| **Documentation**\                            | **Code**\                                               | **Results**\                         | **Other**\                          |
-+-----------------------------------------------+---------------------------------------------------------+--------------------------------------+-------------------------------------+
-| `Features <features.html>`_                   | `Download <https://sjplimp.github.io/download.html>`_   | `Publications <papers.html>`_        | `Mail list <mail.html>`_            |
-+-----------------------------------------------+---------------------------------------------------------+--------------------------------------+-------------------------------------+
-| `Manual <doc/Manual.html>`_                   | `GitHub <https://github.com/sparta/sparta>`_            | `Pictures & Movies <pictures.html>`_ | `Authors <authors.html>`_           |
-+-----------------------------------------------+---------------------------------------------------------+--------------------------------------+-------------------------------------+
-| `Tutorials <tutorials.html>`_                 | `SourceForge <http://sourceforge.net/projects/sparta>`_ | `Benchmarks <bench.html>`_           | `Other codes & tools <other.html>`_ |
-+-----------------------------------------------+---------------------------------------------------------+--------------------------------------+-------------------------------------+
-| `Commands <doc/Section_commands.html#cmd_5>`_ | `Latest features & bug fixes <bug.html>`_               | `Citing SPARTA <papers.html>`_       | `Open source <open_source.html>`_   |
-+-----------------------------------------------+---------------------------------------------------------+--------------------------------------+-------------------------------------+
-|                                               | `Report bugs & request features <unbug.html>`_          |                                      | .                                   |
-+-----------------------------------------------+---------------------------------------------------------+--------------------------------------+-------------------------------------+
++-----------------------------------------------+----------------------------------------------------------+--------------------------------------+-------------------------------------+
+| **Documentation**\                            | **Code**\                                                | **Results**\                         | **Other**\                          |
++-----------------------------------------------+----------------------------------------------------------+--------------------------------------+-------------------------------------+
+| `Features <features.html>`_                   | `Download <https://sjplimp.github.io/download.html>`_    | `Publications <papers.html>`_        | `Mail list <mail.html>`_            |
++-----------------------------------------------+----------------------------------------------------------+--------------------------------------+-------------------------------------+
+| `Manual <doc/Manual.html>`_                   | `GitHub <https://github.com/sparta/sparta>`_             | `Pictures & Movies <pictures.html>`_ | `Authors <authors.html>`_           |
++-----------------------------------------------+----------------------------------------------------------+--------------------------------------+-------------------------------------+
+| `Tutorials <tutorials.html>`_                 | `SourceForge <https://sourceforge.net/projects/sparta>`_ | `Benchmarks <bench.html>`_           | `Other codes & tools <other.html>`_ |
++-----------------------------------------------+----------------------------------------------------------+--------------------------------------+-------------------------------------+
+| `Commands <doc/Section_commands.html#cmd_5>`_ | `Latest features & bug fixes <bug.html>`_                | `Citing SPARTA <papers.html>`_       | `Open source <open_source.html>`_   |
++-----------------------------------------------+----------------------------------------------------------+--------------------------------------+-------------------------------------+
+|                                               | `Report bugs & request features <unbug.html>`_           |                                      | .                                   |
++-----------------------------------------------+----------------------------------------------------------+--------------------------------------+-------------------------------------+
 
 .. _download: https://sjplimp.github.io/download.html
 
@@ -71,31 +71,31 @@ code is designed to be easy to modify or extend with new
 functionality.
 
 SPARTA is distributed as an `open source code <open_source.html>`_ under
-the terms of the `GPL <http://www.gnu.org/copyleft/gpl.html>`_, or sometimes (by request) under the terms
-of the `GNU Lesser General Public License (LGPL) <http://www.gnu.org/licenses/lgpl-2.1.html>`_.  The current
+the terms of the `GPL <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>`_, or sometimes (by request) under the terms
+of the `GNU Lesser General Public License (LGPL) <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>`_.  The current
 version can be downloaded `here <https://sjplimp.github.io/download.html>`_.
 
-SPARTA was primarily developed at `Sandia National Laboratories <http://www.sandia.gov>`_,
-a US `Department of Energy <http://www.doe.gov>`_ (DOE) laboratory.  The authors and
+SPARTA was primarily developed at `Sandia National Laboratories <https://www.sandia.gov>`_,
+a US `Department of Energy <https://www.energy.gov>`_ (DOE) laboratory.  The authors and
 funding are listed on `this page <authors.html>`_.
 
-.. _gpl: http://www.gnu.org/copyleft/gpl.html
+.. _gpl: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 
 
-.. _gnu2: http://www.gnu.org/licenses/lgpl-2.1.html
+.. _gnu2: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
 
 
 
-.. _snl: http://www.sandia.gov
+.. _snl: https://www.sandia.gov
 
 
 
-.. _doe: http://www.doe.gov
+.. _doe: https://www.energy.gov
 
 
 
-.. _sjp: http://www.sjplimp.github.io
+.. _sjp: https://sjplimp.github.io
 
 
 
@@ -230,7 +230,7 @@ Recent SPARTA News
   model.
 * :raw-html:`<IMG SRC = "images/new.gif">` (10/14) Added two `Python scripts <doc/Section_tools.html#paraview>`_ which can convert SPARTA
   output files to ParaView format for interactive 3d viz.
-  `Paraview <http://www.paraview.org>`_ is a popular freely-available
+  `Paraview <https://www.paraview.org>`_ is a popular freely-available
   visualization tool.
 * :raw-html:`<IMG SRC = "images/new.gif">` (8/14) Added a `stl2surf.py tool <doc/Section_tools.html#stl2surf>`_ to convert STL-format
   triangulation files into the SPARTA `surface file <doc/read_surf.html>`_

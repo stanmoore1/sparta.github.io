@@ -15,17 +15,17 @@ Open-Source Distribution
 
 SPARTA comes with no warranty of any kind.  As each source file
 states in its header, it is a copyrighted code that is distributed
-free-of-charge, under the terms of the `GNU Public License <http://www.gnu.org/copyleft/gpl.html>`_ (GPL),
-or sometimes (by request) under the terms of the `GNU Lesser General Public License (LGPL) <http://www.gnu.org/licenses/lgpl-2.1.html>`_.  This is often referred to as open-source
+free-of-charge, under the terms of the `GNU Public License <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>`_ (GPL),
+or sometimes (by request) under the terms of the `GNU Lesser General Public License (LGPL) <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>`_.  This is often referred to as open-source
 distribution - see `www.gnu.org <http://www.gnu.org>`_ or
-`www.opensource.org <http://www.opensource.org>`_.  The legal text of the GPL or LGPL is
+`www.opensource.org <https://opensource.org>`_.  The legal text of the GPL or LGPL is
 in the LICENSE file that is included in the SPARTA distribution.
 
-.. _gnu: http://www.gnu.org/copyleft/gpl.html
+.. _gnu: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 
 
-.. _gnu2: http://www.gnu.org/licenses/lgpl-2.1.html
+.. _gnu2: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
 
 
 
@@ -33,7 +33,7 @@ in the LICENSE file that is included in the SPARTA distribution.
 
 
 
-.. _opensource: http://www.opensource.org
+.. _opensource: https://opensource.org
 
 
 

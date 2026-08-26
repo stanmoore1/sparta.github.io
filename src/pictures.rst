@@ -173,14 +173,14 @@ computational grid of 10M cells.  The Mir surface mesh has 53K
 triangles.  The simulation ran for 0.5M timesteps on 128 nodes (2048
 cores) of a large Intel Xeon cluster at Sandia.  The final
 time-averaged steady-state grid and surface element data was written
-to a file and visualized by `TecPlot <http://www.tecplot.com>`_.  The
+to a file and visualized by `TecPlot <https://www.tecplot.com>`_.  The
 grid cell coloring is for gas temperature; the surface element
 coloring is for heatflux onto the surface.
 
 The first image is a single snapshot of a cut plane through the data
 set.  The second image is a "movie" of scanning the cut plane through
 the data set.  The third and fourth images are of similar data sets
-rendered by the `ParaView visualization toolkit <http://www.paraview.org>`_.
+rendered by the `ParaView visualization toolkit <https://www.paraview.org>`_.
 
 .. image:: ../images/mir_small.jpg
    :target: images/mir.png
@@ -231,11 +231,11 @@ ParaView viz of reentry flows
 ----------------------------------------------------------------------------
 
 These are snapshots from simulations done by Michael Gallis (magalli
-at sandia.gov) to illlustrate use of the open-source `ParaView visualization package <http://www.paraview.org>`_ with SPARTA output.  Each is a simple
+at sandia.gov) to illlustrate use of the open-source `ParaView visualization package <https://www.paraview.org>`_ with SPARTA output.  Each is a simple
 demonstration of flow around a spacecraft in the upper atomosphere,
 e.g. as it undergoes re-entry.
 
-.. _paraview: http://www.paraview.org
+.. _paraview: https://www.paraview.org
 
 
 
@@ -252,7 +252,7 @@ commands.
 
 \c) Convert the output to ParaView format via the `paraview tools <doc/Section_tools.html#paraview>`_ Python scripts.
 
-\d) Run `ParaView <http://www.paraview.org>`_ to produce images like these or
+\d) Run `ParaView <https://www.paraview.org>`_ to produce images like these or
 animations.
 
 Thsee are images of the Orion, Gemini, and Apollo capsules, and the
