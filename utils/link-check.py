@@ -42,6 +42,15 @@ MANUAL = 'doc'
 # separate job from changing how it is written; and recorded rather than
 # ignored so that this check stays useful -- anything not on this list is
 # a link the conversion broke.
+#
+# The doc/ entries only come into play once the manual has been copied in;
+# they were checked against both the published txt2html manual and the
+# Sphinx one, and are dead in each, so they are the site's own rot rather
+# than anything the manual's conversion changed.  Most name a command that
+# has since been renamed or absorbed -- fix_inflow became fix_emit_face,
+# accelerate_kokkos became Section_accelerate -- and three are plain typos:
+# "write_suf", "collide/html", and a create_particles link with no
+# extension.
 KNOWN_BROKEN = {
     # a manual page linked without the doc/ prefix
     'bug.html': {'compute_distsurf_grid.html', 'fix_ave_time.html',
@@ -49,13 +58,24 @@ KNOWN_BROKEN = {
                  'stats_style.html',
                  # patch files that are not in the repository
                  'patches/files.11Jun16', 'patches/files.24May16',
-                 'patches/files.4Apr17'},
+                 'patches/files.4Apr17',
+                 # manual pages that no longer exist under those names
+                 'doc/accelerate_kokkos.html', 'doc/compute_distsurf.html',
+                 'doc/dump_grid.html', 'doc/fix_adapt_grid.html',
+                 'doc/fix_emit.html', 'doc/fix_inflow.html',
+                 'doc/fix_inflow_file.html',
+                 # typos in the link targets themselves
+                 'doc/collide/html', 'doc/create_particles',
+                 'doc/write_suf.html',
+                 # an anchor Section_tools has never defined
+                 'doc/Section_tools.html#stlsurf'},
     # ":link(pizza,...)" is defined on other pages but not on this one,
     # and the download page belongs to a different site
     'other.html': {'pizza', '../download.html'},
     'pictures.html': {'movies/rti_longtime.mov'},
     # anchors bench.txt links to and never defines
-    'bench.html': {'#interpret', '#machine'},
+    'bench.html': {'#interpret', '#machine', 'doc/accelerate_kokkos.html'},
+    'features.html': {'doc/fix_inflow.html'},
 }
 
 
@@ -75,38 +95,53 @@ def main():
         print(f'no such directory: {root}', file=sys.stderr)
         return 2
 
-    have = {p.name: anchors(p.read_text(errors='replace'))
-            for p in root.glob('*.html')}
+    # Every page in the tree, keyed by its path below the root, so that a
+    # link from bench/plot_free.html into ../index.html is resolved against
+    # the directory it was written in.  The manual under doc/ is indexed as
+    # a link target -- the site links into it constantly -- but not walked
+    # as a source: it is a separate project and checks its own links.
+    pages = sorted(p for p in root.rglob('*.html')
+                   if p.relative_to(root).parts[0] != MANUAL)
+    have = {p.relative_to(root).as_posix(): anchors(p.read_text(errors='replace'))
+            for p in root.rglob('*.html')}
 
     bad = []
     known = 0
     unbuilt = set()
-    for page in sorted(root.glob('*.html')):
+    for page in pages:
+        name = page.relative_to(root).as_posix()
         text = page.read_text(errors='replace')
         for m in HREF.finditer(text):
             href = html.unescape(m.group(1))
             if href.startswith(('http', 'mailto', 'ftp', 'javascript:')):
                 continue
             target, _, frag = href.partition('#')
-            allowed = KNOWN_BROKEN.get(page.name, ())
+            allowed = KNOWN_BROKEN.get(name, ())
             if href in allowed or (target and target in allowed):
                 known += 1
                 continue
-            if target and not (root / target).exists():
+            if target and not (page.parent / target).exists():
                 # The manual is a separate project, copied in under doc/ at
                 # release time, so it is legitimately absent from a build of
                 # the site alone.  Only doc/, and only when it is not there.
                 if target.split('/')[0] == MANUAL and not (root / MANUAL).is_dir():
                     unbuilt.add(target)
                     continue
-                bad.append(f'{page.name} -> {target} (no such file)')
+                bad.append(f'{name} -> {target} (no such file)')
                 continue
-            dest = target or page.name
+            # the anchor is looked for in the file the link actually reaches
+            dest = name
+            if target:
+                resolved = (page.parent / target).resolve()
+                try:
+                    dest = resolved.relative_to(root.resolve()).as_posix()
+                except ValueError:      # a link that climbs out of the tree
+                    continue
             if frag and dest in have and frag not in have[dest]:
                 if '#' + frag in allowed:
                     known += 1
                     continue
-                bad.append(f'{page.name} -> {href} (no such anchor)')
+                bad.append(f'{name} -> {href} (no such anchor)')
 
     for b in sorted(set(bad)):
         print(f'  {b}')
@@ -117,7 +152,7 @@ def main():
         print(f'  note: {len(unbuilt)} link(s) into doc/ not checked; the '
               f'manual is copied in from the SPARTA repository at release')
     n = len(set(bad))
-    print(f'  {n} dead internal link(s) or anchor(s) in {len(have)} pages')
+    print(f'  {n} dead internal link(s) or anchor(s) in {len(pages)} pages')
     return 1 if n else 0
 
 

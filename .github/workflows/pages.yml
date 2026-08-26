@@ -1,0 +1,100 @@
+# Build the site and publish it to GitHub Pages, for review before release.
+#
+# This exists so the converted site can be looked at in a browser rather than
+# read as a diff.  It builds the two halves the way a release does -- the
+# site here, the manual from the SPARTA repository -- and puts the manual
+# under doc/, which is where the site's ~400 links into it point.
+#
+# On a fork the pages are served under the repository name, e.g.
+# https://<user>.github.io/sparta.github.io/.  Every link the site writes is
+# relative, so the prefix costs nothing; the only exceptions are the release
+# notes on index.html and bug.html, which spell out
+# https://sparta.github.io/doc/... in full and therefore keep pointing at the
+# real site, exactly as they do today.
+#
+# Nothing generated is committed: the artifact is built and deployed, and the
+# published pages at the repository root are left alone.
+
+name: pages
+
+on:
+  push:
+    branches: [sphinx-site]
+  workflow_dispatch:
+    inputs:
+      manual_ref:
+        description: 'Branch of the SPARTA repository to build the manual from'
+        default: 'sphinx-step1-parity'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time, and let a newer push win.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Build the site
+      run: make html SPHINXEXTRA="-W --keep-going"
+
+    # Twice, because the site has two states worth checking.  Here it is the
+    # site alone, which is what a build between releases produces and what
+    # the links into doc/ cannot be checked against.
+    - name: Check every internal link and anchor resolves
+      run: make check
+
+    # The manual is a separate Sphinx project in the SPARTA repository.  At
+    # release time its built pages are copied in under doc/; this does the
+    # same, so the links between the two halves can be followed.
+    - uses: actions/checkout@v4
+      with:
+        repository: stanmoore1/sparta
+        ref: ${{ github.event.inputs.manual_ref || 'sphinx-step1-parity' }}
+        path: sparta
+
+    - name: Build the manual
+      run: make -C sparta/doc html SPHINXEXTRA="-W --keep-going"
+
+    - name: Place the manual under doc/
+      run: |
+        rm -rf html/doc
+        cp -r sparta/doc/html html/doc
+
+    # And here it is the released state, where the ~400 links from the site
+    # into the manual point at pages that are present and can be followed.
+    # link-check.py directly rather than "make check", which would rebuild
+    # the site and has no business doing so now that doc/ is in place.
+    - name: Check the links into the manual resolve
+      run: python3 utils/link-check.py html
+
+    # Pages serves the uploaded artifact as-is, without Jekyll, so the
+    # theme's _static directory survives.  The marker is written anyway so
+    # that serving these same pages from a branch would behave the same.
+    - name: Mark the tree as not-Jekyll
+      run: touch html/.nojekyll
+
+    - uses: actions/upload-pages-artifact@v3
+      with:
+        path: html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-22.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - id: deployment
+      uses: actions/deploy-pages@v4
