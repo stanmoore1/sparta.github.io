@@ -1,5 +1,6 @@
 "SPARTA WWW Site"_sws :c
 :link(sws,index.html)
+:link(pizza,https://lammps.github.io/pizza)
 
 :line
 
@@ -61,6 +62,6 @@ Our group has also written and released a toolkit called
 post-processing, and which includes a simple OpenGL-based
 visualization tool called "gl"_https://lammps.github.io/pizza/doc/gl.html.
 Pizza.py is written in "Python"_http://www.python.org, and is
-available for download from "this page"_../download.html.  It also
+available for download from "this page"_pizza.  It also
 includes tools that convert SPARTA particle dumps into input formats
 readable by VMD and AtomEye.

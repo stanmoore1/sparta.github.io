@@ -73,16 +73,89 @@ DECLARED = {
     ],
 }
 
-# Link targets that move because a declared markup fix moved them, as
-# exact (lost, added) sets: any other link changing on the same page is
-# still a failure, and a page not named here has no allowance at all.
-DECLARED_LINKS = {
-    'features.html': (
-        ['doc/read_grid.html<A HREF ='],
-        ['doc/Section_intro.html#intro_3', 'doc/read_grid.html'],
-        'the unterminated <A HREF> was one unusable target where the '
-        'source meant two real ones; fixing the typo restores both',
-    ),
+# Link targets that this branch deliberately moved, as a per-page map of
+# the target the published page used to the target it uses now.  A "None"
+# replacement means the link now points off-site and so leaves the
+# internal set entirely.
+#
+# Anything not named here still fails, in both directions: a link that
+# moves without a declaration, and a declared one that does not move.
+RETARGETED = {
+    'bench.html': {
+        'doc/accelerate_kokkos.html': (
+            'doc/Section_accelerate.html#acc_3',
+            'the KOKKOS package has its own page no longer; it is section '
+            '5.3 of Section_accelerate'),
+    },
+    'bug.html': {
+        # commands renamed or absorbed since the release note was written
+        'doc/accelerate_kokkos.html': (
+            'doc/Section_accelerate.html#acc_3', 'as above'),
+        'doc/compute_distsurf.html': (
+            'doc/compute_distsurf_grid.html',
+            'the compute is distsurf/grid, and the note calls it that'),
+        'doc/dump_grid.html': (
+            'doc/dump.html', 'dump grid is a style of the dump command'),
+        'doc/fix_adapt_grid.html': (
+            'doc/fix_adapt.html', 'fix adapt/grid is now fix adapt'),
+        'doc/fix_emit.html': (
+            'doc/fix_emit_face.html',
+            'both notes are about the face variants -- one names the '
+            'subsonic keyword, the other says "fix emit face commands"'),
+        'doc/fix_inflow.html': (
+            'doc/fix_emit_face.html', 'fix inflow became fix emit/face'),
+        'doc/fix_inflow_file.html': (
+            'doc/fix_emit_face_file.html',
+            'fix inflow/file became fix emit/face/file'),
+        # typos in the target itself
+        'doc/write_suf.html': (
+            'doc/write_surf.html', 'the link text says write_surf'),
+        'doc/collide/html': (
+            'doc/collide.html', 'a slash where the dot belonged'),
+        'doc/create_particles': (
+            'doc/create_particles.html', 'no extension'),
+        'doc/Section_tools.html#stlsurf': (
+            'doc/Section_tools.html#stl2surf',
+            'the anchor Section_tools defines is stl2surf'),
+        # manual pages linked without the doc/ prefix, so they resolved
+        # against the site root and 404ed
+        'global.html': ('doc/global.html', 'missing doc/ prefix'),
+        'stats_style.html': ('doc/stats_style.html', 'missing doc/ prefix'),
+        'fix_ave_time.html': ('doc/fix_ave_time.html', 'missing doc/ prefix'),
+        'compute_distsurf_grid.html': (
+            'doc/compute_distsurf_grid.html', 'missing doc/ prefix'),
+        'fix_emit_face_file.html': (
+            'doc/fix_emit_face_file.html', 'missing doc/ prefix'),
+    },
+    'features.html': {
+        'doc/fix_inflow.html': (
+            'doc/fix_emit_face.html', 'fix inflow became fix emit/face'),
+        'doc/read_grid.html<A HREF =': (
+            'doc/read_grid.html',
+            'the unterminated <A HREF> from the features.txt:60 typo'),
+    },
+    'other.html': {
+        'pizza': (
+            None,
+            'the page used the "pizza" alias without defining it, so '
+            'txt2html published the word itself as the href; the alias is '
+            'now defined as index.txt and features.txt define it'),
+        '../download.html': (
+            None,
+            'the path was written relative to the Pizza.py site, not this '
+            'one, so it climbed above the site root; it now points at the '
+            'Pizza.py page the same sentence already links'),
+    },
+}
+
+# Links the published page could not make at all, restored by a fix
+# declared above.  Exact, and only on pages that have a declaration.
+RESTORED = {
+    'features.html': {
+        'doc/Section_intro.html#intro_3':
+            'the second of the two links the unterminated <A HREF> ran '
+            'together into one unusable target',
+    },
 }
 
 # What MathJax leaves in the static HTML: the LaTeX between \\[..\\] for a
@@ -434,20 +507,33 @@ def main():
         # were themselves agreed for one of those two reasons, and never
         # where a link was also lost.
         recoverable = agreed['unescaped_lt'] or agreed['rst_markup_in_source']
-        declared = DECLARED_LINKS.get(name)
+        # Rewrite the old page's targets through the declared moves, so a
+        # declared retarget cancels out and everything else still shows.
+        retarget = RETARGETED.get(name, {})
+        if retarget:
+            moved = collections.Counter()
+            for target, count in oc.items():
+                if target in retarget:
+                    replacement = retarget[target][0]
+                    if replacement is None:      # now points off-site
+                        continue
+                    moved[replacement] += count
+                else:
+                    moved[target] += count
+            oc = moved
+            lost, added = oc - nc, nc - oc
+            for target in RESTORED.get(name, ()):
+                if added[target]:
+                    del added[target]
+            if not lost and not added:
+                agreed_total['links_retargeted'] += len(retarget)
+                agreed_pages['links_retargeted'] += 1
         if added and not lost and recoverable:
             agreed_total['links_recovered'] += len(list(added.elements()))
             agreed_pages['links_recovered'] += 1
             if args.verbose:
                 print(f'  ~ {name}: {len(list(added.elements()))} link(s) the '
                       f'old page hid, now visible (agreed)')
-        elif (declared and sorted(lost.elements()) == sorted(declared[0])
-                and sorted(added.elements()) == sorted(declared[1])):
-            # Exact sets, so any other link moving on this page still fails.
-            agreed_total['links_from_markup_fix'] += len(list(added.elements()))
-            agreed_pages['links_from_markup_fix'] += 1
-            if args.verbose:
-                print(f'  ~ {name}: {declared[2]}')
         elif lost or added:
             link_bad.append((name, sorted(lost.elements()), sorted(added.elements())))
             page_ok = False

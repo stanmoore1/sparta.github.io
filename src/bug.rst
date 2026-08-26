@@ -373,8 +373,8 @@ Details for all releases are
 Only new features or notable changes are highlighted here:
 
 * Added new radius/only cell weighting mode for axisymmetric
-  simulations.  See the `global weight <global.html>`_ command. `PR #211 <https://github.com/sparta/sparta/pull/211>`_ and `PR #236 <https://github.com/sparta/sparta/pull/236>`_
-* Extended the `global mem/limit <global.html>`_ command to also work for
+  simulations.  See the `global weight <doc/global.html>`_ command. `PR #211 <https://github.com/sparta/sparta/pull/211>`_ and `PR #236 <https://github.com/sparta/sparta/pull/236>`_
+* Extended the `global mem/limit <doc/global.html>`_ command to also work for
   acquiring ghost cells. `PR #220 <https://github.com/sparta/sparta/pull/220>`_
 * Updated the Kokkos library bundled with SPARTA. `PR #230 <https://github.com/sparta/sparta/pull/230>`_
 * Updated the grid2paraview.py tool to read new grid file format that
@@ -516,7 +516,7 @@ logfile at the end of the run.  This is discussed
 `here <doc/Section_start.html#start_7>`_.  The surface reaction
 quantities are likewise stored by the `surf\_react <doc/surf_react.html>`_
 command, so that they can be accessed by `variables <doc/variable.html>`_
-or `stats <stats_style.html>`_ output.
+or `stats <doc/stats_style.html>`_ output.
 
 \b) See the `Section Howto 6.15 <doc/Section_howto.html#howto_15>`_ doc page
 for a description of how to define and use transparent surfaces.
@@ -838,7 +838,7 @@ details:
 
 * `Section packages <doc/Section_packages.html>`_
 * `Section accelerate <doc/Section_accelerate.html>`_
-* `KOKKOS package <doc/accelerate_kokkos.html>`_
+* `KOKKOS package <doc/Section_accelerate.html#acc_3>`_
 * `suffix <doc/suffix.html>`_ command
 * `package <doc/package.html>`_ command
 
@@ -913,12 +913,12 @@ computations are performed for:
 * `fix ave/grid <doc/fix_ave_grid.html>`_
 * `fix ave/histo <doc/fix_ave_histo.html>`_
 * `fix ave/histo/weight <doc/fix_ave_histo.html>`_
-* `fix adapt/grid <doc/fix_adapt_grid.html>`_
+* `fix adapt/grid <doc/fix_adapt.html>`_
 * `adapt\_grid <doc/adapt_grid.html>`_
 
 A new grid *group-ID* argument is required for the computes in the
 list, is now implemented by the `dump grid <doc/dump.html>`_ command (was
-already an argument), and is required by the `fix ave/grid <doc/fix_ave_grid.html>`_, `fix adapt/grid <doc/fix_adapt_grid.html>`_, and
+already an argument), and is required by the `fix ave/grid <doc/fix_ave_grid.html>`_, `fix adapt/grid <doc/fix_adapt.html>`_, and
 `adapt\_grid <doc/adapt_grid.html>`_ commands.  A *group-ID* setting is a
 new optional keyword for the `fix ave/histo <doc/fix_ave_histo.html>`_
 and `fix ave/histo/weight <doc/fix_ave_histo.html>`_ commands for grid
@@ -933,7 +933,7 @@ because the grid group and surface element group information is now
 stored differently.
 
 The grid cell group assignments persist when doing grid adaptation,
-via the `adapt\_grid <doc/adapt_grid.html>`_ or `fix adapt/grid <doc/fix_adapt_grid.html>`_ commands, which means new refined
+via the `adapt\_grid <doc/adapt_grid.html>`_ or `fix adapt/grid <doc/fix_adapt.html>`_ commands, which means new refined
 or coarsened grid cells inherit the same group assignment from their
 predecessor cells.
 
@@ -1278,7 +1278,7 @@ Mar 2016 version.
 
 **13 Mar 2016**
 
-Fixed some bugs in `grid adaptation <doc/adapt_grid.html>`_, `surface groups <doc/group.html>`_, and the `compute distsurf <doc/compute_distsurf.html>`_ command.
+Fixed some bugs in `grid adaptation <doc/adapt_grid.html>`_, `surface groups <doc/group.html>`_, and the `compute distsurf <doc/compute_distsurf_grid.html>`_ command.
 
 Thanks to Ram Prakash (UNSW-ADFA, Canberra) for sending a script that
 triggered these problems.
@@ -1430,7 +1430,7 @@ that are altered, and the new value they are set to.  Using the *yes*
 option sets these 3 settings to generically good values which seem to
 work for most of the round-off issues we have seen.
 
-Added some error checking and warning messages to the various `fix emit <doc/fix_emit.html>`_ command variants when using the *subsonic*
+Added some error checking and warning messages to the various `fix emit <doc/fix_emit_face.html>`_ command variants when using the *subsonic*
 keyword to invoke subsonic boundary conditions.  There are unusual
 cases (empty grid cells, small temperatures) which can lead to extreme
 flow conditions that we try to protect against more carefully.
@@ -1646,7 +1646,7 @@ during a run.  These values can be accessed by the
 `stats\_style <doc/stats_style.html>`_ command for output with statistics,
 and by `variables <doc/variable.html>`_ that define formulas.  The latter
 means they can be used by any command that uses a variable as input,
-e.g. "the `fix ave/time <fix_ave_time.html>`_ command.
+e.g. "the `fix ave/time <doc/fix_ave_time.html>`_ command.
 
 This is the `list of changed files <patches/files.22Sep15>`_ from the 12
 Sep 2015 version.
@@ -1687,14 +1687,14 @@ commands via the `adapt\_grid <doc/adapt_grid.html>`_.  Or adaptation can
 be performed on-the-fly during a run, via the `fix adapt <doc/fix_adapt.html>`_ command.  Adapation can involve refinement
 and/or coarsening of grid cells, based on a variety of criteria,
 including values calculated by `computes <doc/compute.html>`_ or
-`fixes <doc/fix.html>`_.  The `compute distsurf/grid <compute_distsurf_grid.html>`_ command was added to
+`fixes <doc/fix.html>`_.  The `compute distsurf/grid <doc/compute_distsurf_grid.html>`_ command was added to
 calculate one such criterion: distance of a grid cell from any surface
 element.
 
 Commands to modify surfaces have also been added.  The
 `move\_surf <doc/move_surf.html>`_ and `fix move/surf <doc/fix_move_surf.html>`_ commands allow a group of surface
 elements to be moved in various manners either between runs or during
-a run.  The `write\_surf <doc/write_suf.html>`_ command write surface
+a run.  The `write\_surf <doc/write_surf.html>`_ command write surface
 elements to a file, which can be useful after clipping has taken
 place, surface elements have been moved or removed.  The
 `remove\_surf <doc/remove_surf.html>`_ command can remove a subset of
@@ -1749,7 +1749,7 @@ Jun 2015 version.
 
 **15 Jun 2015**
 
-Fixed a bug when one of the `fix emit <doc/fix_emit.html>`_ face commands
+Fixed a bug when one of the `fix emit <doc/fix_emit_face.html>`_ face commands
 emitted particles on multiple faces of the simulation box and the `fix balance <doc/fix_balance.html>`_ command was also enabled.
 
 This is the `list of changed files <patches/files.15Jun15>`_ from the 15
@@ -1846,7 +1846,7 @@ A new `fix emit/surf <doc/fix_emit_surf.html>`_ command was added to
 enable outflux of particles from surface elements.
 
 A *region* option was added to the
-`create\_particles <doc/create_particles>`_, `fix emit/face <doc/fix_emit_face.html>`_, and `fix emit/face/file <fix_emit_face_file.html>`_ commands.  This allows
+`create\_particles <doc/create_particles.html>`_, `fix emit/face <doc/fix_emit_face.html>`_, and `fix emit/face/file <doc/fix_emit_face_file.html>`_ commands.  This allows
 creation of particles within limited geometric regions of the
 simualation domain.
 
@@ -1951,7 +1951,7 @@ Thanks to David Wolfe (NPS) for calling attention to these issues.
 
 **26 Feb 2015**
 
-Added a `fix inflow/file <doc/fix_inflow_file.html>`_ command which
+Added a `fix inflow/file <doc/fix_emit_face_file.html>`_ command which
 allows input of particles on a simulation box face, with properties of
 the input specified in a file.  The file contains a mesh of points
 that overlay part or all of the box face.  Quantities can be defined
@@ -2001,7 +2001,7 @@ this issue.
 
 **16 Feb 2015**
 
-Two small bug fixes in the `VSS collision model <doc/collide/html>`_.
+Two small bug fixes in the `VSS collision model <doc/collide.html>`_.
 One could generate unrealistic temperatures as the outcome of certain
 reactions.  The second was a bookkeeping error for the code vs the
 format of the input data file of reactions, with regard to
@@ -2115,7 +2115,7 @@ script that triggered the problem.
 **19 Nov 2014**
 
 Some testing and debug lines were left in the recent update of
-the `fix inflow <doc/fix_inflow.html>`_ command, which cause incorrect
+the `fix inflow <doc/fix_emit_face.html>`_ command, which cause incorrect
 input fluxes.  This patch removes the lines.
 
 This is the `list of changed files <patches/files.19Nov14>`_ from the 15
@@ -2149,7 +2149,7 @@ axisymmetric models to allow for the rare case when a particle bounces
 multiple times off the same surface in a single timestep, due to its
 curvature.
 
-Also, three bug fixes for  the `fix inflow <doc/fix_inflow.html>`_ and
+Also, three bug fixes for  the `fix inflow <doc/fix_emit_face.html>`_ and
 `surf\_collide diffuse <doc/surf_collide.html>`_ commands.
 
 * A needed normalization factor for the inward normal vector was
@@ -2269,7 +2269,7 @@ freely-available visualization package.  You must have ParaView
 installed to use the Python scripts.  See tools/paraview/README for
 more details.
 
-Fixed a memory bug with the `dump grid <doc/dump_grid.html>`_ command
+Fixed a memory bug with the `dump grid <doc/dump.html>`_ command
 that could cause problems when there are grid cells split by surfaces
 into two or more sub-cells.
 
@@ -2375,7 +2375,7 @@ Aug 2014 version.
 
 **12 Aug 2014**
 
-Added a `stl2surf.py tool <doc/Section_tools.html#stlsurf>`_ to the tools
+Added a `stl2surf.py tool <doc/Section_tools.html#stl2surf>`_ to the tools
 directory to convert stereolithography (STL) files to SPARTA-format
 surface files, which can be read by the `read\_surf <doc/read_surf.html>`_
 command.

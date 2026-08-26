@@ -64,7 +64,7 @@ Models
 
 * `3d or 2d <doc/dimension.html>`_ or `2d-axisymmetric <doc/Section_howto.html#howto_2>`_ domains
 * variety of `global boundary conditions <doc/boundary.html>`_
-* `create particles <doc/create_particles.html>`_ within flow volume or at `inlet boundaries <doc/fix_inflow.html>`_
+* `create particles <doc/create_particles.html>`_ within flow volume or at `inlet boundaries <doc/fix_emit_face.html>`_
 * emit particles from simulation box faces due to `flow properties <doc/fix_emit_face.html>`_
 * emit particles from simulation box faces due to `profile defined in file <doc/fix_emit_face_file.html>`_
 * emit particles from surface elements due to `normal and flow properties <doc/fix_emit_surf.html>`_

@@ -6,6 +6,10 @@
 
 
 
+.. _pizza: https://lammps.github.io/pizza
+
+
+
 
 ----------
 
@@ -79,11 +83,11 @@ grid, and surface element data to be visualized by
 `ParaView <http://www.paraview.org>`_.
 
 Our group has also written and released a toolkit called
-`Pizza.py <pizza>`_ which provides some tools for doing SPARTA pre- and
+`Pizza.py <https://lammps.github.io/pizza>`_ which provides some tools for doing SPARTA pre- and
 post-processing, and which includes a simple OpenGL-based
 visualization tool called `gl <https://lammps.github.io/pizza/doc/gl.html>`_.
 Pizza.py is written in `Python <http://www.python.org>`_, and is
-available for download from `this page <../download.html>`_.  It also
+available for download from `this page <https://lammps.github.io/pizza>`_.  It also
 includes tools that convert SPARTA particle dumps into input formats
 readable by VMD and AtomEye.
 

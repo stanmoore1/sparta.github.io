@@ -122,7 +122,7 @@ SPARTA distribution.
 
 As above, this plot shows timings results in particle moves/sec/node,
 for runs of different sizes on varying node counts.  Data for the same
-two machines is shown: `chama <#machine>`_ (Intel cluster with Ifiniband
+two machines is shown: `chama <#machines>`_ (Intel cluster with Ifiniband
 at Sandia) and mira (IBM BG/Q at ANL).  Comparing these timings to the
 free molecule flow plot in the previous section shows the cost of
 collisions (and sorting) slows down the performance by a factor of
@@ -205,7 +205,7 @@ single GPU/node, only double precision.
 
 Strong scaling means the same size problem is run on successively more
 nodes.  Weak scaling means the problem size doubles each time the node
-count doubles.  See a fuller description `here <#interpret>`_ of how to
+count doubles.  See a fuller description `here <#plots>`_ of how to
 interpret these plots.
 
 .. image:: ../bench/plot_free_strong_8M_best_small.jpg
@@ -370,7 +370,7 @@ single GPU/node, only double precision.
 
 Strong scaling means the same size problem is run on successively more
 nodes.  Weak scaling means the problem size doubles each time the node
-count doubles.  See a fuller description `here <#interpret>`_ of how to
+count doubles.  See a fuller description `here <#plots>`_ of how to
 interpret these plots.
 
 .. image:: ../bench/plot_collide_strong_8M_best_small.jpg
@@ -529,7 +529,7 @@ single GPU/node, only double precision.
 
 Strong scaling means the same size problem is run on successively more
 nodes.  Weak scaling means the problem size doubles each time the node
-count doubles.  See a fuller description `here <#interpret>`_ of how to
+count doubles.  See a fuller description `here <#plots>`_ of how to
 interpret these plots.
 
 .. image:: ../bench/plot_sphere_strong_8M_best_small.jpg
@@ -653,18 +653,18 @@ packages support multiple hardware options.
 For acceleration on a CPU:
 
 * CPU = reference implementation, no package, no acceleration
-* Kokkos/OMP = `Kokkos package <doc/accelerate_kokkos.html>`_ with OMP option via OpenMP
-* Kokkos/serial = `Kokkos package <doc/accelerate_kokkos.html>`_ with serial option for non-threaded operation on CPUs
+* Kokkos/OMP = `Kokkos package <doc/Section_accelerate.html#acc_3>`_ with OMP option via OpenMP
+* Kokkos/serial = `Kokkos package <doc/Section_accelerate.html#acc_3>`_ with serial option for non-threaded operation on CPUs
 
 For acceleration on an Intel KNL:
 
 * CPU/KNL = reference implementation, no package, no acceleration
-* Kokkos/KNL = `Kokkos package <doc/accelerate_kokkos.html>`_ with KNL option
-* Kokkos/serial = `Kokkos package <doc/accelerate_kokkos.html>`_ with KNL/serial option
+* Kokkos/KNL = `Kokkos package <doc/Section_accelerate.html#acc_3>`_ with KNL option
+* Kokkos/serial = `Kokkos package <doc/Section_accelerate.html#acc_3>`_ with KNL/serial option
 
 For acceleration on an NVIDIA GPU:
 
-* Kokkos/Cuda = `Kokkos package <doc/accelerate_kokkos.html>`_ with CUDA option
+* Kokkos/Cuda = `Kokkos package <doc/Section_accelerate.html#acc_3>`_ with CUDA option
 
 
 ----------
