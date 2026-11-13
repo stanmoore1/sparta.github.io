@@ -15,6 +15,16 @@ href="mailto:sjplimp@gmail.com" />
 href="mailto:sjplimp@gmail.com" />
     <meta name="MSSmartTagsPreventParsing" content="TRUE" />
     <meta name="Author" content="Steve Plimpton" />
+    <style>
+      .logo-hover { display: inline-block; position: relative; line-height: 0; }
+      .logo-hover .logo-anim { position: absolute; left: 0; top: 0;
+                               width: 100%; height: 100%; }
+      /* The animated file is named only in a custom property, so the
+         browser does not fetch it until this rule actually uses it. */
+      .logo-hover:hover .logo-anim { background-image: var(--logo-anim);
+                                     background-size: contain; }
+      .logo-hint { color: #555; }
+    </style>
 </HEAD>
 
 <CENTER><H3>SPARTA Direct Simulation Monte Carlo (DSMC) Simulator 
@@ -24,13 +34,22 @@ chance.</I> -- Robert Coveyou
 </CENTER>
 <CENTER><I>God does not play dice.</I> -- Albert Einstein 
 </CENTER>
+<CENTER>
+<span class="logo-hover">
+<img src="images/logo_static.gif" width="150" height="150" alt="SPARTA logo">
+<span class="logo-anim" style="--logo-anim:url('images/logo.gif')" aria-hidden="true"></span>
+</span>
+<br>
+<small class="logo-hint">hover to animate</small>
+</CENTER>
+
 <HR>
 
 <DIV ALIGN=center><TABLE  BORDER=1 >
 <TR ALIGN="center"><TD ><B>Documentation</B></TD><TD ><B>Code</B></TD><TD ><B>Results</B></TD><TD ><B>Other</B></TD></TR>
 <TR ALIGN="center"><TD ><A HREF = "features.html">Features</A></TD><TD ><A HREF = "https://sjplimp.github.io/download.html">Download</A></TD><TD ><A HREF = "papers.html">Publications</A></TD><TD ><A HREF = "mail.html">Mail list</A></TD></TR>
 <TR ALIGN="center"><TD ><A HREF = "doc/Manual.html">Manual</A></TD><TD ><A HREF = "https://github.com/sparta/sparta">GitHub</A></TD><TD ><A HREF = "pictures.html">Pictures & Movies</A></TD><TD ><A HREF = "authors.html">Authors</A></TD></TR>
-<TR ALIGN="center"><TD ><A HREF = "tutorials.html">Tutorials</A></TD><TD ><A HREF = "http://sourceforge.net/projects/sparta">SourceForge</A></TD><TD ><A HREF = "bench.html">Benchmarks</A></TD><TD ><A HREF = "other.html">Other codes & tools</A></TD></TR>
+<TR ALIGN="center"><TD ><A HREF = "tutorials.html">Tutorials</A></TD><TD ><A HREF = "https://sourceforge.net/projects/sparta">SourceForge</A></TD><TD ><A HREF = "bench.html">Benchmarks</A></TD><TD ><A HREF = "other.html">Other codes & tools</A></TD></TR>
 <TR ALIGN="center"><TD ><A HREF = "doc/Section_commands.html#cmd_5">Commands</A></TD><TD ><A HREF = "bug.html">Latest features & bug fixes</A></TD><TD ><A HREF = "papers.html">Citing SPARTA</A></TD><TD ><A HREF = "open_source.html">Open source</A></TD></TR>
 <TR ALIGN="center"><TD ></TD><TD ><A HREF = "unbug.html">Report bugs & request features</A></TD><TD ></TD><TD >.
 </TD></TR></TABLE></DIV>
@@ -57,12 +76,12 @@ code is designed to be easy to modify or extend with new
 functionality.
 </P>
 <P>SPARTA is distributed as an <A HREF = "open_source.html">open source code</A> under
-the terms of the <A HREF = "http://www.gnu.org/copyleft/gpl.html">GPL</A>, or sometimes (by request) under the terms
-of the <A HREF = "http://www.gnu.org/licenses/lgpl-2.1.html">GNU Lesser General Public License (LGPL)</A>.  The current
+the terms of the <A HREF = "http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPL</A>, or sometimes (by request) under the terms
+of the <A HREF = "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License (LGPL)</A>.  The current
 version can be downloaded <A HREF = "https://sjplimp.github.io/download.html">here</A>.
 </P>
-<P>SPARTA was primarily developed at <A HREF = "http://www.sandia.gov">Sandia National Laboratories</A>,
-a US <A HREF = "http://www.doe.gov">Department of Energy</A> (DOE) laboratory.  The authors and
+<P>SPARTA was primarily developed at <A HREF = "https://www.sandia.gov">Sandia National Laboratories</A>,
+a US <A HREF = "https://www.energy.gov">Department of Energy</A> (DOE) laboratory.  The authors and
 funding are listed on <A HREF = "authors.html">this page</A>.
 </P>
 
@@ -79,7 +98,24 @@ funding are listed on <A HREF = "authors.html">this page</A>.
 
 <CENTER><H4>Recent SPARTA News 
 </H4></CENTER>
-<UL><LI><IMG SRC = "images/new.gif"> (9/25) Release of version 24 Sep 2025. It
+<UL><LI><IMG SRC = "images/new.gif"> (8/26) Release of version 27 Aug 2026. It
+updates the Kokkos library to v5.0.2, which requires building the
+<A HREF = "doc/Section_accelerate.html">KOKKOS package</A> with CMake, and ports many
+styles to KOKKOS. It adds a new VTK package with native <A HREF = "doc/dump_vtk.html">dump
+vtk</A> styles, a majorant collision frequency (MCF)
+collision scheme and a transient adaptive subcell (TAS)
+collision-partner selection method via
+<A HREF = "doc/collide_modify.html">collide_modify</A>, an "mflow" mass-flow inlet
+and time-averaged "subsonic" boundary condition for <A HREF = "doc/fix_emit_surf.html">fix
+emit/surf</A>, and a new <A HREF = "doc/fix_controller.html">fix
+controller</A> PID feedback controller. It also
+allows <A HREF = "doc/read_isurf.html">implicit surfaces</A> to be used in
+axisymmetric models, enhances the <A HREF = "doc/global.html">global</A> "optmove"
+option, extends the library interface with embedding support, and adds
+<A HREF = "doc/dump_image.html">dump image</A> rendering enhancements and
+transparency. See more details <A HREF = "bug.html">here</A>. 
+
+<LI><IMG SRC = "images/new.gif"> (9/25) Release of version 24 Sep 2025. It
 fixes some issues from the 10Sep2025 release (and before). 
 
 <LI><IMG SRC = "images/new.gif"> (9/25) Release of version 10 Sep 2025. It
@@ -255,7 +291,7 @@ model.
 <LI><IMG SRC = "images/new.gif"> (10/14) Added two <A HREF = "doc/Section_tools.html#paraview">Python
 scripts</A> which can convert SPARTA
 output files to ParaView format for interactive 3d viz.
-<A HREF = "http://www.paraview.org">Paraview</A> is a popular freely-available
+<A HREF = "https://www.paraview.org">Paraview</A> is a popular freely-available
 visualization tool. 
 
 <LI><IMG SRC = "images/new.gif"> (8/14) Added a <A HREF = "doc/Section_tools.html#stl2surf">stl2surf.py

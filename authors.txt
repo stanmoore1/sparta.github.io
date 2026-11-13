@@ -30,10 +30,14 @@ Dan Rader and Steve Kempka, both managers at Sandia, provided
 enthusiastic support for SPARTA development and its release as
 open-source software.
 
+Tim Koehler (Sandia) designed the SPARTA logo shown on the "home
+page"_sws.
+
 :line
 
 Contributors to features added to SPARTA :h4
 
+Aug26 : transient adaptive subcell (TAS) collision partners : James Almgren-Bell (UT Austin)
 Sep24 : create_isurf : Andrew Hong (Sandia)
 Mar24 : variable timestepping : Alan Stagg (Sandia)
 Apr23 : global optmove : Alan Stagg (Sandia)

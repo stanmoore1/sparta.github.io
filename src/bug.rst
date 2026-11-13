@@ -66,6 +66,98 @@ checkout" of any of them.
 
 
 
+**27 Aug 2026**
+
+Details on what changed in this release are
+  `here <https://github.com/sparta/sparta/releases/tag/27Aug2026>`_
+
+Details for all releases are
+ `here <https://github.com/sparta/sparta/releases>`_
+
+Only new features or notable changes are highlighted here:
+
+* Update the Kokkos library in SPARTA to v5.0.2, which requires building
+  the `KOKKOS package <https://sparta.github.io/doc/Section_accelerate.html>`_
+  with CMake, by Stan Moore (SNL) and the Kokkos developers in `PR #596 <https://github.com/sparta/sparta/pull/596>`_
+* Port many styles to the `KOKKOS package <https://sparta.github.io/doc/Section_accelerate.html>`_,
+  including `fix emit/surf <https://sparta.github.io/doc/fix_emit_surf.html>`_,
+  `regions <https://sparta.github.io/doc/region.html>`_, surface collide and
+  surface reaction models, and many computes, by Stan Moore (SNL) in
+  `PR #632 <https://github.com/sparta/sparta/pull/632>`_
+* Close remaining feature gaps in the `KOKKOS package <https://sparta.github.io/doc/Section_accelerate.html>`_, lift
+  hard-coded limits on the number of fix, compute, surface collide, and
+  surface reaction instances, and fix host/device coherence bugs, by Stan
+  Moore (SNL) in `PR #676 <https://github.com/sparta/sparta/pull/676>`_
+* Add a new VTK package with native
+  `dump vtk <https://sparta.github.io/doc/dump_vtk.html>`_ styles for
+  particles, grid cells, and surfaces by Stan Moore (SNL) in `PR #655 <https://github.com/sparta/sparta/pull/655>`_
+* Add a majorant collision frequency (MCF) collision scheme via the
+  `collide\_modify <https://sparta.github.io/doc/collide_modify.html>`_
+  "scheme" keyword by Stan Moore (SNL) in `PR #646 <https://github.com/sparta/sparta/pull/646>`_
+* Add a transient adaptive subcell (TAS) collision-partner selection
+  method via the
+  `collide\_modify <https://sparta.github.io/doc/collide_modify.html>`_
+  "partners" keyword by James Almgren-Bell (UT Austin) and Stan Moore
+  (SNL) in `PR #647 <https://github.com/sparta/sparta/pull/647>`_
+* Add `fix emit/surf <https://sparta.github.io/doc/fix_emit_surf.html>`_
+  "mflow" option for mass-flow inlets and a time-averaged "subsonic"
+  boundary condition by Stan Moore (SNL) in `PR #644 <https://github.com/sparta/sparta/pull/644>`_, based on the original
+  implementation in `PR #430 <https://github.com/sparta/sparta/pull/430>`_
+  by Cosimo89, hieu325, vimalrajv, and syamalpraneeth (ASML
+  Netherlands)
+* Add a new `fix controller <https://sparta.github.io/doc/fix_controller.html>`_ command, a
+  PID feedback controller, by Stan Moore (SNL) in `PR #631 <https://github.com/sparta/sparta/pull/631>`_
+* Allow `implicit surfaces <https://sparta.github.io/doc/read_isurf.html>`_
+  to be used in axisymmetric models by Stan Moore (SNL) in `PR #664 <https://github.com/sparta/sparta/pull/664>`_
+* Add boundary condition, dense cell index, and axisymmetric support to
+  the `global <https://sparta.github.io/doc/global.html>`_ "optmove" option
+  by Stan Moore (SNL) in `PR #672 <https://github.com/sparta/sparta/pull/672>`_
+* Extend the `library interface <https://sparta.github.io/doc/Section_howto.html>`_ with
+  embedding support, and add `dump image <https://sparta.github.io/doc/dump_image.html>`_ rendering
+  enhancements and transparency, by Stan Moore (SNL) in `PR #656 <https://github.com/sparta/sparta/pull/656>`_ and `PR #673 <https://github.com/sparta/sparta/pull/673>`_
+* Allow ambipolar ions to act as third bodies in dissociation and
+  recombination `reactions <https://sparta.github.io/doc/react.html>`_ by
+  Stan Moore (SNL) in `PR #642 <https://github.com/sparta/sparta/pull/642>`_
+* Support vibrational mode degeneracy in the
+  `species <https://sparta.github.io/doc/species.html>`_ vibration file by
+  Stan Moore (SNL) in `PR #643 <https://github.com/sparta/sparta/pull/643>`_
+* Fix the vibrational and rotational energy sampling cutoff for species
+  with many degrees of freedom by Stan Moore (SNL) in `PR #638 <https://github.com/sparta/sparta/pull/638>`_
+* Fix two energy-redistribution bugs in reacting electronic energy
+  exchange by Arnaud Borner (NASA Ames) in `PR #654 <https://github.com/sparta/sparta/pull/654>`_
+* Add a performance summary printed at the end of a run by Stan Moore
+  (SNL) in `PR #609 <https://github.com/sparta/sparta/pull/609>`_
+* Flag invalid use of the wildcard character in compute/fix args used as
+  inputs by other commands by Steve Plimpton (SNL retired) in `PR #653 <https://github.com/sparta/sparta/pull/653>`_
+
+Note: this release is particularly large due to enhanced productivity
+from the use of AI-assisted coding agents including Claude Code and
+Github Copilot (see co-authored commits).
+
+BACKWARD COMPATIBILITY: The `KOKKOS package <https://sparta.github.io/doc/Section_accelerate.html>`_ must now
+be built with CMake, since Kokkos v5.0.2 no longer supports Makefile
+builds, and requires a compiler which supports C++20.  The
+src/MAKE/Makefile.\*kokkos\* files have been removed.  Building SPARTA
+without the KOKKOS package still only requires C++11.
+
+BACKWARD COMPATIBILITY: The
+`collide\_modify <https://sparta.github.io/doc/collide_modify.html>`_
+"nearcp" keyword is deprecated and superseded by the "partners"
+keyword; the old syntax is still accepted.  The "persp" keyword of
+`dump image <https://sparta.github.io/doc/dump_image.html>`_ has been
+removed (it never worked).  The global vector output by `fix ablate <https://sparta.github.io/doc/fix_ablate.html>`_ is now length 3
+instead of 2, and "fix ablate" now uses the surface collision and
+reaction models assigned by
+`surf\_modify <https://sparta.github.io/doc/surf_modify.html>`_ for ablated
+surfaces instead of always using the first model.  Invalid use of the
+wildcard character in compute/fix args used as inputs by other
+commands is now flagged as an error instead of being silently
+accepted.
+
+
+----------
+
+
 **24 Sep 2025**
 
 Details on what changed in this release are

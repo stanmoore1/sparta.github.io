@@ -25,6 +25,27 @@ chance.* -- Robert Coveyou
 
 *God does not play dice.* -- Albert Einstein 
 
+.. raw:: html
+
+   <style>
+     .logo-hover { display: inline-block; position: relative; line-height: 0; }
+     .logo-hover .logo-anim { position: absolute; left: 0; top: 0;
+                              width: 100%; height: 100%; }
+     /* The animated file is named only in a custom property, so the
+        browser does not fetch it until this rule actually uses it. */
+     .logo-hover:hover .logo-anim { background-image: var(--logo-anim);
+                                    background-size: contain; }
+     .logo-hint { color: #555; }
+   </style>
+   <CENTER>
+   <span class="logo-hover">
+   <img src="images/logo_static.gif" width="150" height="150" alt="SPARTA logo">
+   <span class="logo-anim" style="--logo-anim:url('images/logo.gif')" aria-hidden="true"></span>
+   </span>
+   <br>
+   <small class="logo-hint">hover to animate</small>
+   </CENTER>
+
 
 ----------
 
@@ -108,6 +129,19 @@ funding are listed on `this page <authors.html>`_.
 Recent SPARTA News
 ------------------
 
+* :raw-html:`<IMG SRC = "images/new.gif">` (8/26) Release of version 27 Aug 2026. It
+  updates the Kokkos library to v5.0.2, which requires building the
+  `KOKKOS package <doc/Section_accelerate.html>`_ with CMake, and ports many
+  styles to KOKKOS. It adds a new VTK package with native `dump vtk <doc/dump_vtk.html>`_ styles, a majorant collision frequency (MCF)
+  collision scheme and a transient adaptive subcell (TAS)
+  collision-partner selection method via
+  `collide\_modify <doc/collide_modify.html>`_, an "mflow" mass-flow inlet
+  and time-averaged "subsonic" boundary condition for `fix emit/surf <doc/fix_emit_surf.html>`_, and a new `fix controller <doc/fix_controller.html>`_ PID feedback controller. It also
+  allows `implicit surfaces <doc/read_isurf.html>`_ to be used in
+  axisymmetric models, enhances the `global <doc/global.html>`_ "optmove"
+  option, extends the library interface with embedding support, and adds
+  `dump image <doc/dump_image.html>`_ rendering enhancements and
+  transparency. See more details `here <bug.html>`_.
 * :raw-html:`<IMG SRC = "images/new.gif">` (9/25) Release of version 24 Sep 2025. It
   fixes some issues from the 10Sep2025 release (and before).
 * :raw-html:`<IMG SRC = "images/new.gif">` (9/25) Release of version 10 Sep 2025. It

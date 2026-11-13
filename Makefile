@@ -65,6 +65,14 @@ check: html
 # step rather than building into the root directly: sphinx-build owns its
 # output directory, and the root is not something to hand over to it --
 # doc/, images/, movies/ and the rest live there.
+#
+# The site is served from a branch, so GitHub runs it through Jekyll first,
+# and Jekyll drops every directory whose name starts with "_" -- Sphinx's
+# _static (stylesheet) and _images (thumbnails) among them.  .nojekyll at
+# the root turns that off.  It is committed, and recreated here in case it
+# has gone missing, because without it the published site loses its
+# styling and its pictures without any error.
 publish: html
 	@cp -r $(BUILDDIR)/html/. $(BUILDDIR)/
+	@touch $(BUILDDIR)/.nojekyll
 	@echo "Published. Commit the changed pages at the repository root."
