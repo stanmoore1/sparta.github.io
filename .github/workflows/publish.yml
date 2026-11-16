@@ -19,19 +19,20 @@
 
 name: publish
 
+# PREVIEW COPY (doc-preview branch of a fork only): runs on pushes to
+# doc-preview, with no schedule, and builds the manual from the branch
+# under review.  The publish.yml to merge is the one on site-lammps-features.
 on:
   push:
-    branches: [master]
-  schedule:
-    - cron: '17 6 * * *'
+    branches: [doc-preview]
   workflow_dispatch:
     inputs:
       manual_repository:
         description: 'SPARTA repository to build the manual from'
-        default: 'sparta/sparta'
+        default: 'stanmoore1/sparta'
       manual_ref:
         description: 'Branch, tag or commit of that repository'
-        default: 'master'
+        default: 'doc-lammps-features'
 
 permissions:
   contents: read
@@ -47,8 +48,8 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     env:
-      MANUAL_REPO: ${{ github.event.inputs.manual_repository || 'sparta/sparta' }}
-      MANUAL_REF: ${{ github.event.inputs.manual_ref || 'master' }}
+      MANUAL_REPO: ${{ github.event.inputs.manual_repository || 'stanmoore1/sparta' }}
+      MANUAL_REF: ${{ github.event.inputs.manual_ref || 'doc-lammps-features' }}
     steps:
     - uses: actions/checkout@v4
 
