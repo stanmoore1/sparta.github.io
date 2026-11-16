@@ -3,8 +3,7 @@
 # Lives only on the doc-preview branch of a fork; it is not meant to be
 # merged into the live site.  The site pages are taken as they are in this
 # branch (the published Sphinx build), and doc/ is replaced with the manual
-# built from the chosen branch of the SPARTA repository -- keeping
-# doc/Manual.pdf, which the HTML build does not produce.
+# built from the chosen branch of the SPARTA repository, HTML and PDF.
 #
 # Served at https://<user>.github.io/sparta.github.io/.  Every link the
 # site writes is relative, so the repository-name prefix costs nothing.
@@ -54,6 +53,17 @@ jobs:
     - name: Build the manual
       run: make -C sparta/doc html SPHINXEXTRA="-W --keep-going"
 
+    - name: Install LaTeX for the PDF
+      run: |
+        sudo apt-get update -q
+        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
+          --no-install-recommends latexmk texlive-latex-recommended \
+          texlive-latex-extra texlive-fonts-recommended tex-gyre
+
+    # into sparta/doc/html/Manual.pdf, beside the pages
+    - name: Build the PDF
+      run: make -C sparta/doc pdf
+
     - name: Check the manual's own links
       run: python3 sparta/doc/utils/link-check.py sparta/doc/html
 
@@ -63,11 +73,9 @@ jobs:
         mkdir site
         git archive HEAD | tar x -C site
         rm -rf site/.github
-        cp site/doc/Manual.pdf manual.pdf
         rm -rf site/doc
         mkdir site/doc
         cp -a sparta/doc/html/. site/doc/
-        cp manual.pdf site/doc/Manual.pdf
         touch site/.nojekyll
 
     - name: Check the links from the site into the manual
