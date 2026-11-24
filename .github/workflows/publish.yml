@@ -78,10 +78,11 @@ jobs:
     - name: Prepare the apt cache
       run: sudo chmod -R a+rwx /var/cache/apt/archives
 
-    - name: Cache the LaTeX packages
-      uses: actions/cache@v4
+    - name: Restore the LaTeX packages
+      id: latex-cache
+      uses: actions/cache/restore@v4
       with:
-        path: /var/cache/apt/archives
+        path: /var/cache/apt/archives/*.deb
         key: apt-latex-ubuntu-24.04-latexmk-latex-recommended-latex-extra-fonts-recommended-tex-gyre
 
     - name: Install LaTeX for the PDF
@@ -96,6 +97,16 @@ jobs:
         sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
           --no-install-recommends latexmk texlive-latex-recommended \
           texlive-latex-extra texlive-fonts-recommended tex-gyre
+
+    # Saved right after the install, not at the end of the job, so a later
+    # failure does not lose the download.  Only the .deb files: apt's
+    # partial/ directory is readable by root alone, and tar fails on it.
+    - name: Save the LaTeX packages
+      if: steps.latex-cache.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v4
+      with:
+        path: /var/cache/apt/archives/*.deb
+        key: apt-latex-ubuntu-24.04-latexmk-latex-recommended-latex-extra-fonts-recommended-tex-gyre
 
     # writes sparta/doc/html/Manual.pdf
     - name: Build the PDF
